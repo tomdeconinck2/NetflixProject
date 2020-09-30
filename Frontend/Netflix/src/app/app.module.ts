@@ -8,6 +8,7 @@ import { LoginComponent } from './components/login/login.component';
 import { MovieComponent } from './components/movie/movie.component';
 
 import { LoginService } from './services/login.service';
+import { MovieService } from './services/movie.service';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,7 @@ import { LoginService } from './services/login.service';
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [LoginService],
+  providers: [LoginService, MovieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

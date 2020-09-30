@@ -1,18 +1,23 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {MovieComponent} from './components/movie/movie.component';
+import { LoginComponent } from './components/login/login.component';
+import { MovieComponent } from './components/movie/movie.component';
 
 const routes: Routes = [
 	{
-		path: "movie",
+		path: 'movie',
 		component: MovieComponent
-	}
-	
-	
+	},
+	 {
+		path: '',
+		component: LoginComponent
+	},
+
+
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+	imports: [RouterModule.forRoot(routes)],
+	exports: [RouterModule]
 })
 export class AppRoutingModule { }
