@@ -20,4 +20,12 @@ export class LoginService {
      // {headers: new HttpHeaders().set('Authorization', 'Bearer ' + token)}
     );
   }
+
+	ping() {
+		console.log("Service pinged ")
+		return this.http.get('/server/test1')
+		
+	}
+
+
 }
