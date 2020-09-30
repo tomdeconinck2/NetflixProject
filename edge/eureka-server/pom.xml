@@ -12,7 +12,7 @@
 	<artifactId>eureka-server</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>eureka-server</name>
-	<description>The congi server for the Netflix Project</description>
+	<description>The eureka server for the Netflix Project</description>
 
 	<properties>
 		<java.version>11</java.version>
