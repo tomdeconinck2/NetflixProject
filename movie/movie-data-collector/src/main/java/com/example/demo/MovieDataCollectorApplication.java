@@ -18,7 +18,7 @@ public class MovieDataCollectorApplication {
 		System.out.println(" Runs ");
 		SpringApplication.run(MovieDataCollectorApplication.class, args);
 		MovieScraperService m = new MovieScraperService();
-		m.scrape();
+		//m.scrape();
 				
 				
 	}

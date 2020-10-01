@@ -8,11 +8,18 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class MovieScraperService {
 
+	@Autowired
+	MovieRepository mr;
+	
+	MovieScraperService() {	
+	}
+	
 	
 	List<Movie> movieList = new ArrayList<Movie>();
 	
@@ -36,12 +43,22 @@ public class MovieScraperService {
 
 			System.out.println(e.html());
 			
-			movieList.add(new Movie(e.html()));
+			Movie m = new Movie(e.html(), (long) (x + 1));
+			movieList.add(m);
+			addToDb(m);
 		}
 	}
 
+
+	private void addToDb(Movie m) {
+		System.out.println("Test");
+		System.out.println(this.mr);
+		this.mr.save(m);
+	}
+
+
 	public String getBestMovie() {
-		this.scrape();
+		if (this.movieList.isEmpty()) this.scrape();
 		return this.movieList.get(0).title;
 	}
 

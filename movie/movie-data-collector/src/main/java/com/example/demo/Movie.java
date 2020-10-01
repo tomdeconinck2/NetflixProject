@@ -9,7 +9,8 @@ import javax.persistence.Id;
 public class Movie {
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	//@GeneratedValue(strategy=GenerationType.AUTO)
+	//@GeneratedValue()   //TODO, beter om dit terug dit aan te zetten? 
 	Long id;
 	
 	public String title;
@@ -17,8 +18,9 @@ public class Movie {
 	public Movie() {	
 	}
 	
-	public Movie(String title) {
+	public Movie(String title, Long id) {
 		this.title = title;
+		this.id = id;
 	}
 
 	public Long getId() {
