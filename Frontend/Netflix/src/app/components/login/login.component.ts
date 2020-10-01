@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
 		console.log("Pinged ")
 		this.loginService.ping();
 		this.loginService.ping().subscribe(
-			data => { this.s = data },
+			data => { this.s = String(data) },
 			err => console.error(err),
 			() => console.log('bikes loaded')
 		);
