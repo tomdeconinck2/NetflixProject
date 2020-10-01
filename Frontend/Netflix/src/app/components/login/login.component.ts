@@ -13,7 +13,7 @@ export class LoginComponent implements OnInit {
 	constructor(private loginService: LoginService) { }
 
 	ngOnInit(): void {
-		this.ping();
+		//this.ping();
 	}
 
 

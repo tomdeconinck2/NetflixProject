@@ -12,6 +12,8 @@ const httpOptions = {
 })
 export class LoginService {
 
+	x;
+
   constructor(private http:HttpClient) { }
 
   getLogin() {
@@ -23,7 +25,11 @@ export class LoginService {
 
 	ping() {
 		console.log("Service pinged ")
-		return this.http.get('/server/test1')
+		
+		this.x = this.http.get('http://localhost:8080/test');
+		console.log(this.x)
+		return this.x
+		//return this.http.get('/server/test1')
 		
 	}
 
