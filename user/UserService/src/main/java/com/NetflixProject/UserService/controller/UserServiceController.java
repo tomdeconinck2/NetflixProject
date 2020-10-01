@@ -25,12 +25,6 @@ public class UserServiceController {
 		return "Welcome to the UserService microservice!";
 	}
 	
-	@GetMapping("/welcome2")
-	public String welcome2(){
-		return "Welcome 2";
-		
-	}
-	
 	@GetMapping("/allUsers")
 	public List<User> getAllUsers() {
 		return userRepository.findAll();	
