@@ -9,6 +9,7 @@ import { LoginService } from '../../services/login.service';
 export class LoginComponent implements OnInit {
 
 	s = '/';
+	movie = '/';
 
 	constructor(private loginService: LoginService) { }
 
@@ -22,9 +23,22 @@ export class LoginComponent implements OnInit {
 		this.loginService.ping();
 		this.loginService.ping().subscribe(
 			data => { this.s = String(data) },
-			err => console.error(err),
+			err => {console.error(err); this.s=err.error.text },
 			() => console.log('bikes loaded')
 		);
+	}
+
+	getBestMovie() {
+		console.log(" Getting best movie ")
+		//this.loginService.ping();
+		this.loginService.getBestMovie();
+
+		this.loginService.getBestMovie().subscribe(
+			data => { console.log("Hallo"); this.movie = data },
+			err => {console.log("Hallo"); console.error(err) ; this.movie = err.error.text},
+			() => console.log('bikes loaded')
+		);
+
 	}
 
 
