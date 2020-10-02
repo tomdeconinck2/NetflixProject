@@ -32,15 +32,5 @@ export class LoginService {
 
 	}
 
-	getBestMovie() {
-		console.log("Method not implemented.");
-		//this.x = this.http.get('http://localhost:8901');
-		this.x = this.http.get('/movieserver/');
-		
-		console.log(this.x);
-		console.log(" - - -");
-		return this.x;
-	}
-
 
 }

@@ -28,18 +28,5 @@ export class LoginComponent implements OnInit {
 		);
 	}
 
-	getBestMovie() {
-		console.log(" Getting best movie ")
-		//this.loginService.ping();
-		this.loginService.getBestMovie();
-
-		this.loginService.getBestMovie().subscribe(
-			data => { console.log("Hallo"); this.movie = data },
-			err => { console.log("Hallo"); console.error(err); this.movie = err.error.text },
-			() => console.log('bikes loaded')
-		);
-
-	}
-
 
 }
