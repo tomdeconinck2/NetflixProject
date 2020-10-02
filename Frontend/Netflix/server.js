@@ -1,10 +1,3 @@
-//angular.module('app',['ngRoute','customersApp.loginController']);
-
-//app.use(express.static('./dist/netflix'));
-//app.get('/*', function(req, res) { res.sendFile('index.html', {root: 'dist/netflix/'} );});
-
-//app.listen(process.env.PORT || 8080);
-
 //Install express server
 const express = require('express');
 const path = require('path');
@@ -20,5 +13,5 @@ res.sendFile(path.join(__dirname+'/dist/Netflix/index.html'));
 });
 
 // Start the app by listening on the default Heroku port
-app.listen(process.env.PORT || 8080);
+app.listen(process.env.PORT || 4200);
 
