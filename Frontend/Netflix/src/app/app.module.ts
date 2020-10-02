@@ -9,12 +9,14 @@ import { MovieComponent } from './components/movie/movie.component';
 
 import { LoginService } from './services/login.service';
 import { MovieService } from './services/movie.service';
+import { MainComponent } from './components/main/main.component';
 
 @NgModule({
 	declarations: [
 		AppComponent,
 		LoginComponent,
-		MovieComponent
+		MovieComponent,
+		MainComponent
 	],
 	imports: [
 		BrowserModule,

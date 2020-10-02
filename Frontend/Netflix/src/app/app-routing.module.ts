@@ -2,18 +2,19 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './components/login/login.component';
 import { MovieComponent } from './components/movie/movie.component';
+import { MainComponent } from './components/main/main.component';
 
 const routes: Routes = [
 	{
-		path: 'movie',
+		path: 'movies',
 		component: MovieComponent
 	},
 	 {
 		path: '',
-		component: LoginComponent
+		component: MainComponent
 	},
 		{
-		path: 'huts',
+		path: 'login',
 		component: LoginComponent
 	},
 

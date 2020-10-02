@@ -4,7 +4,7 @@ import { LoginService } from '../../services/login.service';
 @Component({
 	selector: 'app-login',
 	templateUrl: './login.component.html',
-	styleUrls: ['./login.component.css']
+	styleUrls: ['./../../app.component.css']
 })
 export class LoginComponent implements OnInit {
 
@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
 		this.loginService.ping();
 		this.loginService.ping().subscribe(
 			data => { this.s = String(data) },
-			err => {console.error(err); this.s=err.error.text },
+			err => { console.error(err); this.s = err.error.text },
 			() => console.log('bikes loaded')
 		);
 	}
@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
 
 		this.loginService.getBestMovie().subscribe(
 			data => { console.log("Hallo"); this.movie = data },
-			err => {console.log("Hallo"); console.error(err) ; this.movie = err.error.text},
+			err => { console.log("Hallo"); console.error(err); this.movie = err.error.text },
 			() => console.log('bikes loaded')
 		);
 

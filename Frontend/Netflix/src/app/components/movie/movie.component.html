@@ -1,9 +1,22 @@
+
+
 <div>
-	 <p>Movie Component</p>
-	 
-	 <button> Ping backend </button>
-	 
+
+	<button (click)="ping()">Ping backend</button>
+
+		<div> <p>Message of the backend: {{s}}<p> </div>
+
+	<button (click)="getBestMovie()">Search best movie</button>
+
+	<div> <p>Message of the backend: {{movie}}<p> </div>
+
+
+	<button (click)="getBestMovie()">List some movies:</button>
+
+	<div> <p> x <p> </div>
+
 </div>
+
 
 
 

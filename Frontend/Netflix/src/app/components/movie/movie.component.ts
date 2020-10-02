@@ -1,24 +1,44 @@
 import { Component, OnInit } from '@angular/core';
+import { LoginService } from 'src/app/services/login.service';
 //import { MovieService} from '../../services/movie.service'
 
 @Component({
   selector: 'app-movie',
   templateUrl: './movie.component.html',
-  styleUrls: ['./movie.component.css']
+  styleUrls: ['./../../app.component.css']
 })
 export class MovieComponent implements OnInit {
 
-  public s = "default";
+	s = '/';
+	movie = '/';
 
-  constructor() { }
-  //constructor(private movieService : MovieService) { }
+	constructor(private loginService: LoginService) { }
 
-  ngOnInit(): void { }//this.getBikes()}
+	ngOnInit(): void {
+		//this.ping();
+	}
 
-//getBikes(){
-//	this.movieService.getMovies().subscribe(
-//		data => {this.s = String(data)}
-//	)
-//}
 
+	ping() {
+		console.log("Pinged ")
+		this.loginService.ping();
+		this.loginService.ping().subscribe(
+			data => { this.s = String(data) },
+			err => {console.error(err); this.s=err.error.text },
+			() => console.log('bikes loaded')
+		);
+	}
+
+	getBestMovie() {
+		console.log(" Getting best movie ")
+		//this.loginService.ping();
+		this.loginService.getBestMovie();
+
+		this.loginService.getBestMovie().subscribe(
+			data => { console.log("Hallo"); this.movie = data },
+			err => {console.log("Hallo"); console.error(err) ; this.movie = err.error.text},
+			() => console.log('bikes loaded')
+		);
+
+	}
 }
