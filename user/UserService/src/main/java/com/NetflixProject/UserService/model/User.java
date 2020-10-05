@@ -6,10 +6,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
+@Table(name = "User")
 public abstract class User {	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -18,6 +20,7 @@ public abstract class User {
 	private String firstName;
 	private String lastName;
 	private String email;
+	
 	
 	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy@HH:mm:ss")
 	private final Date dateCreated = new Date();

@@ -6,17 +6,21 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
+@Table(name = "Rating")
 public class Rating {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
-	private Long userId;
+	//TODO have userID and movieID relation to the respective tables
+	// Not straightforward since User and Movie are different microservices...
+	private Long userId;	
 	private Long movieId;
 	private int Rating;
 	
