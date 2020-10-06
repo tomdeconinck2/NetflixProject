@@ -30,6 +30,7 @@ public abstract class User {
 	
 	
 	public User(String fName, String lName, String email) {
+		//TODO check if email doesn't already exists in the repository
 		this.firstName = fName;
 		this.lastName = lName;
 		this.email = email;
@@ -43,28 +44,29 @@ public abstract class User {
 	}
 	public void setId(Long id) {
 		this.id = id;
-		this.dateLastChanged = new Date();
+		this.setDateLastChanged(new Date());
 	}
 	public String getFirstName() {
 		return firstName;
 	}
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
-		this.dateLastChanged = new Date();
+		this.setDateLastChanged(new Date());
 	}
 	public String getLastName() {
 		return lastName;
 	}
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
-		this.dateLastChanged = new Date();
+		this.setDateLastChanged(new Date());
 	}
 	public String getEmail() {
 		return email;
 	}
 	public void setEmail(String email) {
+		//TODO check if email doesn't already exists in the repository
 		this.email = email;
-		this.dateLastChanged = new Date();
+		this.setDateLastChanged(new Date());
 	}
 
 	public Date getDateCreated() {
@@ -75,5 +77,8 @@ public abstract class User {
 		return dateLastChanged;
 	}
 	
+	public void setDateLastChanged(Date dateLastChanged) {
+		this.dateLastChanged = dateLastChanged;
+	}	
 	
 }
