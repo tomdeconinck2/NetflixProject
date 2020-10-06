@@ -43,6 +43,7 @@ public class Feedback {
 
 
 	public void setId(Long id) {
+		this.setDateLastChanged(new Date());
 		this.id = id;
 	}
 
@@ -53,6 +54,7 @@ public class Feedback {
 
 
 	public void setUserID(Long userID) {
+		this.setDateLastChanged(new Date());
 		this.userID = userID;
 	}
 
@@ -63,6 +65,7 @@ public class Feedback {
 
 
 	public void setDescription(String description) {
+		this.setDateLastChanged(new Date());
 		this.description = description;
 	}
 
