@@ -33,6 +33,7 @@ public class Rating {
 	
 	
 	public Rating(Long userId, Long movieId, int Rating) {
+		//TODO check if there is not already a rating from the given user for the given movie
 		this.userId = userId;
 		this.movieId = movieId;
 		this.Rating = Rating;
@@ -45,6 +46,7 @@ public class Rating {
 	}
 
 	public void setId(Long id) {
+		this.setDateLastChanged(new Date());
 		this.id = id;
 	}
 
@@ -53,6 +55,8 @@ public class Rating {
 	}
 
 	public void setUserId(Long userId) {
+		//TODO check if there is not already a rating from the given user for the given movie
+		this.setDateLastChanged(new Date());
 		this.userId = userId;
 	}
 
@@ -61,6 +65,8 @@ public class Rating {
 	}
 
 	public void setMovieId(Long movieId) {
+		//TODO check if there is not already a rating from the given user for the given movie
+		this.setDateLastChanged(new Date());
 		this.movieId = movieId;
 	}
 
@@ -73,6 +79,7 @@ public class Rating {
 			throw new IllegalArgumentException();
 		}
 		else {
+			this.setDateLastChanged(new Date());
 			Rating = rating;
 		}
 	}
