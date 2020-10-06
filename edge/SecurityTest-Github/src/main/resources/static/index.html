@@ -9,17 +9,19 @@
 <base href="/" />
 <link rel="stylesheet" type="text/css"
     href="/webjars/bootstrap/css/bootstrap.min.css" />
+    <script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
 <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
 <script type="text/javascript"
     src="/webjars/bootstrap/js/bootstrap.min.js"></script>
 </head>
-<body>
+<body style="text-align:center">
     <h1>Login</h1>
     <div class="container unauthenticated">
+    <span class="iconify" data-icon="logos-github-icon" data-inline="false"></span>
         With GitHub: <a href="/oauth2/authorization/github">click here</a>
     </div>
     <div class="container authenticated" style="display: none">
-        Logged in as: <span id="user"></span>
+        Logged in as: <span id="user"> User not found error </span>
         <div>
             <button onClick="logout()" class="btn btn-primary">Logout</button>
         </div>
@@ -42,7 +44,7 @@
                 }
               });
           $.get("/user", function(data) {
-            $("#user").html(data.name);
+            $("#user").html(data.login);
             $(".unauthenticated").hide();
             $(".authenticated").show();
           });
