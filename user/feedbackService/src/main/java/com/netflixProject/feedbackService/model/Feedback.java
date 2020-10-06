@@ -18,7 +18,6 @@ public class Feedback {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
-	//TODO add realtion to ID in User microservice
 	private Long userID;
 	
 	//TODO is a string for now. Maybe has to be changed to a form with some fields for easier analysis
@@ -29,8 +28,6 @@ public class Feedback {
 	
 	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy@HH:mm:ss")
 	private Date dateLastChanged = new Date();
-	
-	
 	
 	
 	

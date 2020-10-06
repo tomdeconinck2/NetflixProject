@@ -18,8 +18,6 @@ public class Rating {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
-	//TODO have userID and movieID relation to the respective tables
-	// Not straightforward since User and Movie are different microservices...
 	private Long userId;	
 	private Long movieId;
 	private int Rating;
