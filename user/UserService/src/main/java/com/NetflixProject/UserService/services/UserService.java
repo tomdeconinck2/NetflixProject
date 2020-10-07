@@ -2,7 +2,11 @@ package com.NetflixProject.UserService.services;
 
 import java.util.List;
 
+import javax.persistence.EntityNotFoundException;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.NetflixProject.UserService.model.User;
@@ -16,27 +20,42 @@ public class UserService {
 	
 	
 	public List<User> getAllUsers() {
-		return userRepository.findAll();	
+		return this.userRepository.findAll();	
 	}
 	
-	public User getUser(Long id) {
-		return userRepository.getOne(id);
+	public ResponseEntity<User> getUser(Long id) {
+		try {
+			User u = userRepository.getOne(id);
+			return new ResponseEntity<>(u,HttpStatus.OK);
+		}
+		catch(EntityNotFoundException e) {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
 	}
 	
-	public boolean addNewUser(User user) {
+	public ResponseEntity<String> addNewUser(User user) {
+		if(! userExists(user)){
+			this.userRepository.save(user);
+			return new ResponseEntity<>("User created",HttpStatus.CREATED);
+		}
+		else {
+			return new ResponseEntity<>("A user with this email address already exists",HttpStatus.PRECONDITION_FAILED);
+		}
+	}
+	
+	private boolean userExists(User u) {
 		// TODO check if email already exists. A user can not have multiple accounts for the same email address
-		userRepository.save(user);
-		return true;
+		return false;
 	}
 	
 
-	public boolean deleteUser(Long id){
+	public ResponseEntity<String> deleteUser(Long id){
 		try {
-			userRepository.deleteById(id);
-			return true;
+			this.userRepository.deleteById(id);
+			return new ResponseEntity<>("User deleted",HttpStatus.OK);
 		}
 		catch(IllegalArgumentException e) {
-			return false;
+			return new ResponseEntity<>("User did not exist",HttpStatus.NOT_FOUND);
 		}
 	}
 	

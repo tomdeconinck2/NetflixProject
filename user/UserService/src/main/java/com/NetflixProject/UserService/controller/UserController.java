@@ -3,7 +3,6 @@ package com.NetflixProject.UserService.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -33,29 +32,19 @@ public class UserController {
 	}
 
 	@GetMapping("/{id}")
-	public User getUser(@PathVariable("id") Long id) {
+	public ResponseEntity<User> getUser(@PathVariable("id") Long id) {
 		return userService.getUser(id);
 	}
 	
 	@PostMapping("/addUser")
-	public ResponseEntity<Long> addNewUser(@RequestBody User user) {
-		boolean isAdded = userService.addNewUser(user);
-		if(isAdded) {
-			return new ResponseEntity<>(HttpStatus.CREATED);
-		}
-		return new ResponseEntity<>(HttpStatus.PRECONDITION_FAILED);
+	public ResponseEntity<String> addNewUser(@RequestBody User user) {
+		return userService.addNewUser(user);
 	}
 	
 
 	@DeleteMapping("/{id}")
-	public ResponseEntity<Long> deleteUser(@PathVariable("id") Long id){
-		boolean isDeleted = userService.deleteUser(id);
-		if(isDeleted) {
-			return new ResponseEntity<>(HttpStatus.OK);
-		}
-		else {
-			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-		}
+	public ResponseEntity<String> deleteUser(@PathVariable("id") Long id){
+		return userService.deleteUser(id);
 	}
 	
 	
