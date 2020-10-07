@@ -19,7 +19,7 @@ public class RatingService {
 	RatingRepository ratingRepository;
 	
 
-	public List<Rating> getAllUsers() {
+	public List<Rating> getAllRatings() {
 		return ratingRepository.findAll();	
 	}
 	
@@ -36,8 +36,13 @@ public class RatingService {
 	
 
 	public ResponseEntity<String> addRating(Rating rating) {
-		ratingRepository.save(rating);
-		return new ResponseEntity<>("New Rating added", HttpStatus.CREATED);
+		if(!ratingExists(rating)) {
+			ratingRepository.save(rating);
+			return new ResponseEntity<>("New Rating added", HttpStatus.CREATED);
+		}
+		else {
+			return new ResponseEntity<String>("A Rating from this user for this movie already exists",HttpStatus.PRECONDITION_FAILED);
+		}
 	}
 
 
@@ -49,6 +54,17 @@ public class RatingService {
 		catch(IllegalArgumentException e) {
 			return new ResponseEntity<>("Rating did not exist", HttpStatus.NOT_FOUND);
 		}
+	}	
+	
+	
+	private boolean ratingExists(Rating rating) {
+		List<Rating> ratings = this.getAllRatings();
+		for(Rating otherRating: ratings) {
+			if(Rating.equals(otherRating, rating)) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 }

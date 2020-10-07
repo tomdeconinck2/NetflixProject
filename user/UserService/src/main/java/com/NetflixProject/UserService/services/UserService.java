@@ -25,8 +25,8 @@ public class UserService {
 	
 	public ResponseEntity<User> getUser(Long id) {
 		try {
-			User u = userRepository.getOne(id);
-			return new ResponseEntity<>(u,HttpStatus.OK);
+			User u = this.userRepository.getOne(id);
+			return new ResponseEntity<User>(u,HttpStatus.OK);
 		}
 		catch(EntityNotFoundException e) {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -36,29 +36,59 @@ public class UserService {
 	public ResponseEntity<String> addNewUser(User user) {
 		if(! userExists(user)){
 			this.userRepository.save(user);
-			return new ResponseEntity<>("User created",HttpStatus.CREATED);
+			return new ResponseEntity<String>("User created",HttpStatus.CREATED);
 		}
 		else {
-			return new ResponseEntity<>("A user with this email address already exists",HttpStatus.PRECONDITION_FAILED);
+			return new ResponseEntity<String>("A user with this email address already exists",HttpStatus.PRECONDITION_FAILED);
 		}
-	}
-	
-	private boolean userExists(User u) {
-		// TODO check if email already exists. A user can not have multiple accounts for the same email address
-		return false;
-	}
-	
+	}	
 
 	public ResponseEntity<String> deleteUser(Long id){
 		try {
 			this.userRepository.deleteById(id);
-			return new ResponseEntity<>("User deleted",HttpStatus.OK);
+			return new ResponseEntity<String>("User deleted",HttpStatus.OK);
 		}
 		catch(IllegalArgumentException e) {
-			return new ResponseEntity<>("User did not exist",HttpStatus.NOT_FOUND);
+			return new ResponseEntity<String>("User did not exist",HttpStatus.NOT_FOUND);
 		}
 	}
 	
 	
+	public ResponseEntity<String> changeEmail(Long id, String newEmail){
+		if(!emailExists(newEmail)) {
+			User user = this.userRepository.getOne(id);
+			user.setEmail(newEmail);
+			return new ResponseEntity<String>("Changed the email adress", HttpStatus.OK);
+		}
+		return new ResponseEntity<String>("The given email address is already assigned to a user", HttpStatus.PRECONDITION_FAILED);
+	}
+	
+	
+	
+	
+	private boolean emailExists(String email) {
+		List<User> users = this.getAllUsers();
+		for(User currentUser : users) {
+			if(User.emailExists(currentUser.getEmail(), email)) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	
+	
+	/*
+	 * Check if the given user already exists in the repository
+	 */
+	private boolean userExists(User otherUser) {
+		List<User> users = this.getAllUsers();
+		for(User currentUser : users) {
+			if(User.equals(currentUser, otherUser)) {
+				return true;
+			}
+		}
+		return false;
+	}
 
 }

@@ -31,17 +31,11 @@ public class Rating {
 	private final Date dateCreated = new Date();
 	
 	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy@HH:mm:ss")
-	private Date dateLastChanged = new Date();
+	private Date dateLastChanged = new Date();	
 	
 	
-	public Rating(Long userId, Long movieId, int Rating) {
-		//TODO check if there is not already a rating from the given user for the given movie
-		this.userId = userId;
-		this.movieId = movieId;
-		this.Rating = Rating;
+	public Rating() {
 	}
-	
-	
 	
 	public Long getId() {
 		return id;
@@ -57,7 +51,6 @@ public class Rating {
 	}
 
 	public void setUserId(Long userId) {
-		//TODO check if there is not already a rating from the given user for the given movie
 		this.setDateLastChanged(new Date());
 		this.userId = userId;
 	}
@@ -65,9 +58,8 @@ public class Rating {
 	public Long getMovieId() {
 		return movieId;
 	}
-
+	
 	public void setMovieId(Long movieId) {
-		//TODO check if there is not already a rating from the given user for the given movie
 		this.setDateLastChanged(new Date());
 		this.movieId = movieId;
 	}
@@ -98,5 +90,18 @@ public class Rating {
 		return dateCreated;
 	}
 	
+	
+	/*
+	 * Two ratings are equal when they have the same userID and movieID
+	 */
+	public static boolean equals(Rating r1, Rating r2) {		
+		Long u1 = r1.getUserId();
+		Long u2 = r2.getUserId();
+		
+		Long m1 = r1.getMovieId();
+		Long m2 = r2.getMovieId();
+		
+		return (!u1.equals(u2)) && (!m1.equals(m2));
+	}
 
 }

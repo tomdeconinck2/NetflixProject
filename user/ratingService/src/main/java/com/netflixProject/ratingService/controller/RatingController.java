@@ -26,7 +26,7 @@ public class RatingController {
 	
 	@GetMapping("/all")
 	public List<Rating> getAllUsers() {
-		return ratingService.getAllUsers();	
+		return ratingService.getAllRatings();	
 	}
 	
 	@GetMapping("/{id}")

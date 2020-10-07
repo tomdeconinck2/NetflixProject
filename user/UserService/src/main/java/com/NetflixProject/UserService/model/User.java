@@ -33,12 +33,6 @@ public class User {
 	public User() {
 	}
 	
-	public User(String firstName, String lastName, String email) {
-		this.first_name = firstName;
-		this.last_name = lastName;
-		this.email = email;
-	}
-	
 	/*
 	 * Getters and setters for the above variables
 	 */
@@ -73,7 +67,6 @@ public class User {
 	}
 	
 	public void setEmail(String email) {
-		//TODO check if email doesn't already exists in the repository
 		this.email = email;
 		this.setDateLastChanged(new Date());
 	}
@@ -90,5 +83,20 @@ public class User {
 		this.date_last_changed = dateLastChanged;
 	}	
 	
+	/*
+	 * Two users are equal to each other when their email addresses are equal
+	 */
+	public static boolean equals(User u1, User u2) {
+		String email1 = u1.getEmail();
+		String email2 = u2.getEmail();
+		return emailExists(email1, email2);
+	}
+	
+	/*
+	 * Check if the two given email addresses are equal
+	 */
+	public static boolean emailExists(String e1, String e2) {
+		return e1.equals(e2);
+	}
 	
 }
