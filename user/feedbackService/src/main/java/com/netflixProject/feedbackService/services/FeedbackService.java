@@ -2,8 +2,13 @@ package com.netflixProject.feedbackService.services;
 
 import java.util.List;
 
+import javax.persistence.EntityNotFoundException;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+
 import com.netflixProject.feedbackService.model.Feedback;
 import com.netflixProject.feedbackService.repositories.FeedbackRepository;
 
@@ -18,22 +23,28 @@ public class FeedbackService {
 		return feedbackRepository.findAll();
 	}
 	
-	public Feedback getFeedback(Long id) {
-		return feedbackRepository.getOne(id);		
+	public ResponseEntity<Feedback> getFeedback(Long id) {
+		try {
+			Feedback f = feedbackRepository.getOne(id);
+			return new ResponseEntity<>(f,HttpStatus.OK);
+		}
+		catch(EntityNotFoundException e) {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
 	}
 	
-	public boolean addFeedback(Feedback feedback) {
+	public ResponseEntity<String> addFeedback(Feedback feedback) {
 		feedbackRepository.save(feedback);
-		return true;
+		return new ResponseEntity<>("New Feedback is added", HttpStatus.CREATED);
 	}
 
-	public boolean deleteFeedback(Long id) {
+	public ResponseEntity<String> deleteFeedback(Long id) {
 		try {
 			feedbackRepository.deleteById(id);
-			return true;
+			return new ResponseEntity<>("Feedback is deleted", HttpStatus.OK);
 		}
 		catch(IllegalArgumentException e) {
-			return false;
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 	}
 

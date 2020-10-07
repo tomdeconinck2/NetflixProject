@@ -9,9 +9,11 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "Feedback")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Feedback {
 	
 	@Id

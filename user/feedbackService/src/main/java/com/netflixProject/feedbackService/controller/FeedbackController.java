@@ -3,7 +3,6 @@ package com.netflixProject.feedbackService.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -32,28 +31,17 @@ public class FeedbackController {
 	}
 	
 	@GetMapping("/{id}")
-	public Feedback getFeedback(@PathVariable Long id) {
+	public ResponseEntity<Feedback> getFeedback(@PathVariable Long id) {
 		return feedbackService.getFeedback(id);		
 	}
 	
 	@PostMapping("/addFeedback")
-	public ResponseEntity<Long> addFeedback(@RequestBody Feedback feedback) {
-		boolean isAdded = feedbackService.addFeedback(feedback);
-		if(isAdded) {
-			return new ResponseEntity<>(HttpStatus.CREATED);
-		}
-		return new ResponseEntity<>(HttpStatus.PRECONDITION_FAILED);
+	public ResponseEntity<String> addFeedback(@RequestBody Feedback feedback) {
+		return feedbackService.addFeedback(feedback);
 	}
 	
 	@DeleteMapping("/{id}")
-	public ResponseEntity<Long> deleteFeedback(@PathVariable("id") Long id){
-		boolean isDeleted = feedbackService.deleteFeedback(id);
-		if(isDeleted) {
-			return new ResponseEntity<>(HttpStatus.OK);
-		}
-		else {
-			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-		}
+	public ResponseEntity<String> deleteFeedback(@PathVariable("id") Long id){
+		return feedbackService.deleteFeedback(id);
 	}
-
 }
