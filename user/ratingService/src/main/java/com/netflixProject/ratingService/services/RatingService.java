@@ -2,7 +2,11 @@ package com.netflixProject.ratingService.services;
 
 import java.util.List;
 
+import javax.persistence.EntityNotFoundException;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.netflixProject.ratingService.model.Rating;
@@ -20,24 +24,30 @@ public class RatingService {
 	}
 	
 
-	public Rating getRating(Long id) {
-		return ratingRepository.getOne(id);
+	public ResponseEntity<Rating> getRating(Long id) {
+		try {
+			Rating r = ratingRepository.getOne(id);
+			return new ResponseEntity<>(r,HttpStatus.OK);
+		}
+		catch(EntityNotFoundException e) {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
 	}
 	
 
-	public boolean addRating(Rating rating) {
+	public ResponseEntity<String> addRating(Rating rating) {
 		ratingRepository.save(rating);
-		return true;
+		return new ResponseEntity<>("New Rating added", HttpStatus.CREATED);
 	}
 
 
-	public boolean deleteRating(Long id) {
+	public ResponseEntity<String> deleteRating(Long id) {
 		try {
 			ratingRepository.deleteById(id);
-			return true;
+			return new ResponseEntity<>("Rating deleted", HttpStatus.OK);
 		}
 		catch(IllegalArgumentException e) {
-			return false;
+			return new ResponseEntity<>("Rating did not exist", HttpStatus.NOT_FOUND);
 		}
 	}
 

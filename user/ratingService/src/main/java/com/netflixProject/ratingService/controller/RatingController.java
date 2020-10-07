@@ -3,7 +3,6 @@ package com.netflixProject.ratingService.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -31,30 +30,20 @@ public class RatingController {
 	}
 	
 	@GetMapping("/{id}")
-	public Rating getRating(@PathVariable("id") Long id) {
+	public ResponseEntity<Rating> getRating(@PathVariable("id") Long id) {
 		return ratingService.getRating(id);
 	}
 	
 	
 	
 	@GetMapping("/addRating")
-	public ResponseEntity<Long> addRating(@RequestBody Rating rating) {
-		boolean isAdded = ratingService.addRating(rating);
-		if(isAdded) {
-			return new ResponseEntity<>(HttpStatus.CREATED);
-		}
-		return new ResponseEntity<>(HttpStatus.PRECONDITION_FAILED);
+	public ResponseEntity<String> addRating(@RequestBody Rating rating) {
+		return ratingService.addRating(rating);
 	}
 	
 	@DeleteMapping("/{id}")
-	public ResponseEntity<Long> deleteRating(@PathVariable("id") Long id){
-		boolean isDeleted = ratingService.deleteRating(id);
-		if(isDeleted) {
-			return new ResponseEntity<>(HttpStatus.OK);
-		}
-		else {
-			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-		}
+	public ResponseEntity<String> deleteRating(@PathVariable("id") Long id){
+		return ratingService.deleteRating(id);
 	}
 
 }
