@@ -20,7 +20,7 @@ public class Feedback {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
-	private Long userID;
+	private Long user_id;
 	
 	//TODO is a string for now. Maybe has to be changed to a form with some fields for easier analysis
 	private String description;
@@ -34,8 +34,6 @@ public class Feedback {
 	
 	
 	public Feedback(Long userId, String description) {
-		this.userID = userId;
-		this.description = description;
 	}
 
 
@@ -51,13 +49,13 @@ public class Feedback {
 
 
 	public Long getUserID() {
-		return userID;
+		return user_id;
 	}
 
 
 	public void setUserID(Long userID) {
 		this.setDateLastChanged(new Date());
-		this.userID = userID;
+		this.user_id = userID;
 	}
 
 
