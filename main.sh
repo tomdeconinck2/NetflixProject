@@ -15,9 +15,9 @@ cd ..
 echo "Eureka started up"
 sleep x
 
-cd zuul-proxy
+cd SecurityServer/
 mvn clean package
-java -jar ./target/zuul-proxy-0.0.1-SNAPSHOT.jar &
+java -jar ./target/SecurityServer-0.0.1-SNAPSHOT.jar &
 cd ..
 echo "Zuul started up"
 sleep x 
