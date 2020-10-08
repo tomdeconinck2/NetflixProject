@@ -5,14 +5,9 @@ import java.util.List;
 import javax.persistence.EntityNotFoundException;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cloud.client.loadbalancer.LoadBalanced;
-import org.springframework.context.annotation.Bean;
-import org.springframework.core.ParameterizedTypeReference;
-import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
 
 import com.NetflixProject.UserService.model.User;
 import com.NetflixProject.UserService.repositories.UserRepository;
@@ -23,11 +18,8 @@ public class UserService {
 	@Autowired
 	private UserRepository userRepository;
 	
-	//@Autowired
-	//private UserRatingClient urc;
-	
 	@Autowired
-	RestTemplate restTemplate;
+	private UserRatingClient urc;
 	
 	
 	public List<User> getAllUsers() {
@@ -78,22 +70,11 @@ public class UserService {
 	
 	public ResponseEntity<String> getRatingsOfUser(Long id){
 		if(userExists(id)) {
-			//String ratings = this.urc.getRatingsOfUser(id);
-			
-			String ratings = restTemplate.exchange("http://rating-service//ratingsOfUser/{id}",
-                    HttpMethod.GET, null, new ParameterizedTypeReference<String>() {}, id).getBody();
-			
+			String ratings = this.urc.getRatingsOfUser(id);			
 			return new ResponseEntity<String>(ratings, HttpStatus.OK);
 		}
 		return new ResponseEntity<String>("The given user does not exist", HttpStatus.NOT_FOUND);
 	}
-	
-	@Bean
-    @LoadBalanced
-    public RestTemplate restTemplate() {
-        return new RestTemplate();
-    }
-	
 	
 	
 	/*
