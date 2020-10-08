@@ -18,6 +18,10 @@ public class RatingService {
 	@Autowired
 	RatingRepository ratingRepository;
 	
+	//TODO use these when wanting to set a new rating
+	private final int MIN_RATING = 0;
+	private final int MAX_RATING = 10;
+	
 
 	public List<Rating> getAllRatings() {
 		return ratingRepository.findAll();	
