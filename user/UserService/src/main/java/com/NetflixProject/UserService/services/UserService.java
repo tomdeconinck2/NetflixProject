@@ -5,9 +5,14 @@ import java.util.List;
 import javax.persistence.EntityNotFoundException;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.client.loadbalancer.LoadBalanced;
+import org.springframework.context.annotation.Bean;
+import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
 import com.NetflixProject.UserService.model.User;
 import com.NetflixProject.UserService.repositories.UserRepository;
@@ -17,6 +22,12 @@ public class UserService {
 	
 	@Autowired
 	private UserRepository userRepository;
+	
+	//@Autowired
+	//private UserRatingClient urc;
+	
+	@Autowired
+	RestTemplate restTemplate;
 	
 	
 	public List<User> getAllUsers() {
@@ -45,6 +56,7 @@ public class UserService {
 
 	public ResponseEntity<String> deleteUser(Long id){
 		try {
+			//TODO also delete all the users Ratings, feedbacks and subscriptions
 			this.userRepository.deleteById(id);
 			return new ResponseEntity<String>("User deleted",HttpStatus.OK);
 		}
@@ -64,8 +76,29 @@ public class UserService {
 	}
 	
 	
+	public ResponseEntity<String> getRatingsOfUser(Long id){
+		if(userExists(id)) {
+			//String ratings = this.urc.getRatingsOfUser(id);
+			
+			String ratings = restTemplate.exchange("http://rating-service//ratingsOfUser/{id}",
+                    HttpMethod.GET, null, new ParameterizedTypeReference<String>() {}, id).getBody();
+			
+			return new ResponseEntity<String>(ratings, HttpStatus.OK);
+		}
+		return new ResponseEntity<String>("The given user does not exist", HttpStatus.NOT_FOUND);
+	}
+	
+	@Bean
+    @LoadBalanced
+    public RestTemplate restTemplate() {
+        return new RestTemplate();
+    }
 	
 	
+	
+	/*
+	 * Check if the email already exists
+	 */
 	private boolean emailExists(String email) {
 		List<User> users = this.getAllUsers();
 		for(User currentUser : users) {
@@ -75,7 +108,19 @@ public class UserService {
 		}
 		return false;
 	}
-	
+
+	/*
+	 * Check if the given id belongs to a user
+	 */
+	private boolean userExists(Long id) {
+		List<User> users = this.getAllUsers();
+		for(User user : users) {
+			if(user.getId() == id) {
+				return true;
+			}
+		}
+		return false;
+	}
 	
 	
 	/*
