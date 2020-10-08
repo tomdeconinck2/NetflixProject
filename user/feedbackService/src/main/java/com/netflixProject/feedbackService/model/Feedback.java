@@ -9,16 +9,17 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "Feedback")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Feedback {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
-	//TODO add realtion to ID in User microservice
 	private Long userID;
 	
 	//TODO is a string for now. Maybe has to be changed to a form with some fields for easier analysis
@@ -29,8 +30,6 @@ public class Feedback {
 	
 	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy@HH:mm:ss")
 	private Date dateLastChanged = new Date();
-	
-	
 	
 	
 	
@@ -46,6 +45,7 @@ public class Feedback {
 
 
 	public void setId(Long id) {
+		this.setDateLastChanged(new Date());
 		this.id = id;
 	}
 
@@ -56,6 +56,7 @@ public class Feedback {
 
 
 	public void setUserID(Long userID) {
+		this.setDateLastChanged(new Date());
 		this.userID = userID;
 	}
 
@@ -66,6 +67,7 @@ public class Feedback {
 
 
 	public void setDescription(String description) {
+		this.setDateLastChanged(new Date());
 		this.description = description;
 	}
 

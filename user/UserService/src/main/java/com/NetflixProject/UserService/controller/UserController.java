@@ -3,6 +3,8 @@ package com.NetflixProject.UserService.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -10,31 +12,40 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.NetflixProject.UserService.model.User;
-import com.NetflixProject.UserService.repositories.UserServiceRepository;
+import com.NetflixProject.UserService.services.UserService;
 
 @RestController
-public class UserServiceController {
-	
+public class UserController {
+		
 	@Autowired
-	private UserServiceRepository userRepository;
+	private UserService userService;
 	
-	@GetMapping()
+	@GetMapping("/")
 	public String welcomeMessage() {
 		return "Welcome to the UserService microservice!";
 	}
 	
+	
 	@GetMapping("/all")
 	public List<User> getAllUsers() {
-		return userRepository.findAll();	
+		return userService.getAllUsers();	
 	}
 
 	@GetMapping("/{id}")
-	public User getUser(@PathVariable("id") Long id) {
-		return userRepository.getOne(id);
+	public ResponseEntity<User> getUser(@PathVariable("id") Long id) {
+		return userService.getUser(id);
 	}
 	
 	@PostMapping("/addUser")
-	public void addNewUser(@RequestBody User user) {
-		userRepository.save(user);
+	public ResponseEntity<String> addNewUser(@RequestBody User user) {
+		return userService.addNewUser(user);
 	}
+	
+
+	@DeleteMapping("/{id}")
+	public ResponseEntity<String> deleteUser(@PathVariable("id") Long id){
+		return userService.deleteUser(id);
+	}
+	
+	
 }
