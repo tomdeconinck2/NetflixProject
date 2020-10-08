@@ -18,7 +18,10 @@
     <h1>Login</h1>
     <div class="container unauthenticated">
     <span class="iconify" data-icon="logos-github-icon" data-inline="false"></span>
-        With GitHub: <a href="/oauth2/authorization/github">click here</a>
+        With GitHub : <a href="/oauth2/authorization/github">click here</a>
+    </div>
+        <span class="iconify" data-icon="logos-github-icon" data-inline="false"></span>
+        With GitHub : <a href="/oauth2/code/github">click here</a>
     </div>
     <div class="container authenticated" style="display: none">
         Logged in as: <span id="user"> User not found error </span>
@@ -32,13 +35,11 @@
           $
               .ajaxSetup({
                 beforeSend : function(xhr, settings) {
-                  if (settings.type == 'POST' || settings.type == 'PUT'
-                      || settings.type == 'DELETE') {
+                  if (settings.type == 'POST' || settings.type == 'PUT' || settings.type == 'DELETE') {
                     if (!(/^http:.*/.test(settings.url) || /^https:.*/
                         .test(settings.url))) {
                       // Only send the token to relative URLs i.e. locally.
-                      xhr.setRequestHeader("X-XSRF-TOKEN",
-                          Cookies.get('XSRF-TOKEN'));
+                      xhr.setRequestHeader("X-XSRF-TOKEN", Cookies.get('XSRF-TOKEN'));
                     }
                   }
                 }

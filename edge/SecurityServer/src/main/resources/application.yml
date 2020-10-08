@@ -6,21 +6,22 @@ eureka:
 ribbon:
   ReadTimeout: 10000
 server:
-  port: 8081 #Temp out of businnes
+  port: 8080
+
 spring:
   application:
-    name: zuul-proxy
+    name: zuul
   security:
     oauth2:
       client:
         registration:
           github:
-            clientId: b18dd191850898347c31
-            clientSecret: b99d048a2402b219bac1bd787ed532555a5b8614
+            clientId: 8e7167d91e93a417068c
+            clientSecret: bd30b4e2b811aba1b73bc5fcd7c60a3925259d67
 
 zuul:
   ignored-services: '*'
-  sensitiveHeaders: Cookie,Set-Cookie
+  #sensitiveHeaders: Cookie,Set-Cookie
   routes:
     config:
       path: /config/**
@@ -38,5 +39,4 @@ zuul:
       path: /user-service/**
       service-id: user-service
 
-
-
+#
