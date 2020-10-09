@@ -65,10 +65,18 @@ sleep x
 
 echo "userservice started up"
 
-echo "backend started"
-cd Frontend
-ls
-cd Netflix
+
+cd Frontend/Netflix
 npm start
 sleep x
 echo "frontend started"
+cd ../..
+
+
+
+
+
+
+
+
+
