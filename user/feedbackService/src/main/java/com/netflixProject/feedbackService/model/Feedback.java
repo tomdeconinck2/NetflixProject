@@ -26,14 +26,14 @@ public class Feedback {
 	private String description;
 
 	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy@HH:mm:ss")
-	private final Date dateCreated = new Date();
+	private final Date date_created = new Date();
 	
 	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy@HH:mm:ss")
-	private Date dateLastChanged = new Date();
+	private Date date_last_changed = new Date();
 	
 	
 	
-	public Feedback(Long userId, String description) {
+	public Feedback() {
 	}
 
 
@@ -71,17 +71,17 @@ public class Feedback {
 
 
 	public Date getDateLastChanged() {
-		return dateLastChanged;
+		return date_last_changed;
 	}
 
 
 	public void setDateLastChanged(Date dateLastChanged) {
-		this.dateLastChanged = dateLastChanged;
+		this.date_last_changed = dateLastChanged;
 	}
 
 
 	public Date getDateCreated() {
-		return dateCreated;
+		return date_created;
 	}
 	
 	
