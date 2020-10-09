@@ -3,7 +3,7 @@
 In order to be able to run, ensure the following:
 
 Install:
-1. Java (JDK 11), test with java --version  (
+1. Java (JDK 11), test with java --version 
 2. Maven (3.6<), test with mvn -v
 3. Git
 4. npm (6.10<), test with npm -v
