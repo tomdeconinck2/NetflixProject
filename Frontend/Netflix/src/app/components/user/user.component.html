@@ -1,0 +1,29 @@
+
+
+<div>
+
+	<button (click)="getUsers">All users</button>
+
+	<div>
+		<p>
+        <li *ngFor="let u of users">{{u.getEmail()}}</li>
+        <p>
+	</div>
+
+	<button (click)="getWelcomeMessage()">Welcome Message</button>
+
+	<div>
+		<p>Message of the backend: {{welcomeMessage}}
+		<p>
+	</div>
+
+</div>
+
+
+
+
+
+
+
+
+
