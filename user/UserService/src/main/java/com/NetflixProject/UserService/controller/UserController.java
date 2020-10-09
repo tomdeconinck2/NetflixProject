@@ -39,12 +39,17 @@ public class UserController {
 	@PostMapping("/addUser")
 	public ResponseEntity<String> addNewUser(@RequestBody User user) {
 		return userService.addNewUser(user);
-	}
-	
+	}	
 
 	@DeleteMapping("/{id}")
 	public ResponseEntity<String> deleteUser(@PathVariable("id") Long id){
 		return userService.deleteUser(id);
+	}
+	
+	
+	@GetMapping("/{id}/ratings")
+	public ResponseEntity<String> getRatingsOfUser(@PathVariable("id") Long id){
+		return userService.getRatingsOfUser(id);
 	}
 	
 	

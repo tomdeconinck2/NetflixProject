@@ -40,11 +40,35 @@ cd movie/movie-data-collector
 mvn clean package
 java -jar ./target/movie-data-collector-0.0.1-SNAPSHOT.jar &
 cd ../..
-
 echo "backend started"
-cd Frontend
-ls
-cd Netflix
+
+cd user/feedbackService
+mvn clean package
+java -jar ./target/feedbackService-0.0.1-SNAPSHOT.jar &
+cd ../..
+
+cd user/ratingService
+mvn clean package
+java -jar ./target/ratingService-0.0.1-SNAPSHOT.jar &
+cd ../.. 
+
+cd user/UserService
+mvn clean package
+java -jar ./target/UserService-0.0.1-SNAPSHOT.jar &
+cd ../.. 
+echo "userservice started up"
+
+cd Frontend/Netflix
 npm start
 sleep x
 echo "frontend started"
+cd ../..
+
+
+
+
+
+
+
+
+

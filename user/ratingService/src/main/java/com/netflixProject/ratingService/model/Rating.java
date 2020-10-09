@@ -20,18 +20,16 @@ public class Rating {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
-	private Long userId;	
-	private Long movieId;
-	private int Rating;
+	private Long user_id;	
+	private Long movie_id;
+	private int rating;
 	
-	private int MIN_RATING = 0;
-	private int MAX_RATING = 10;
 	
 	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy@HH:mm:ss")
-	private final Date dateCreated = new Date();
+	private final Date date_created = new Date();
 	
 	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy@HH:mm:ss")
-	private Date dateLastChanged = new Date();	
+	private Date date_last_changed = new Date();	
 	
 	
 	public Rating() {
@@ -47,47 +45,42 @@ public class Rating {
 	}
 
 	public Long getUserId() {
-		return userId;
+		return user_id;
 	}
 
 	public void setUserId(Long userId) {
 		this.setDateLastChanged(new Date());
-		this.userId = userId;
+		this.user_id = userId;
 	}
 
 	public Long getMovieId() {
-		return movieId;
+		return movie_id;
 	}
 	
 	public void setMovieId(Long movieId) {
 		this.setDateLastChanged(new Date());
-		this.movieId = movieId;
+		this.movie_id = movieId;
 	}
 
 	public int getRating() {
-		return Rating;
+		return rating;
 	}
 
-	public void setRating(int rating) {
-		if(rating < MIN_RATING || rating > MAX_RATING){
-			throw new IllegalArgumentException();
-		}
-		else {
-			this.setDateLastChanged(new Date());
-			Rating = rating;
-		}
+	public void setRating(int newRating) {
+		this.setDateLastChanged(new Date());
+		this.rating = newRating;
 	}
 
 	public Date getDateLastChanged() {
-		return dateLastChanged;
+		return date_last_changed;
 	}
 
 	public void setDateLastChanged(Date dateLastChanged) {
-		this.dateLastChanged = dateLastChanged;
+		this.date_last_changed = dateLastChanged;
 	}
 
 	public Date getDateCreated() {
-		return dateCreated;
+		return date_created;
 	}
 	
 	

@@ -1,6 +1,7 @@
 package com.netflixProject.ratingService.controller;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -25,8 +26,14 @@ public class RatingController {
 	}
 	
 	@GetMapping("/all")
-	public List<Rating> getAllUsers() {
+	public List<Rating> getAllRatings() {
 		return ratingService.getAllRatings();	
+	}
+	
+	@GetMapping("/ratingsOfUser/{userId}")
+	public List<Rating> getRatingsForUser(@PathVariable("userId") Long userId){
+		List<Rating> ratings = this.getAllRatings();
+		return ratings.stream().filter(rating -> userId.equals(rating.getUserId())).collect(Collectors.toList());
 	}
 	
 	@GetMapping("/{id}")
