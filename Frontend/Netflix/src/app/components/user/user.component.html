@@ -2,11 +2,10 @@
 
 <div>
 
-	<button (click)="getUsers">All users</button>
+	<button (click)="getUsers()">All users</button>
 
 	<div>
-		<p>
-        <li *ngFor="let u of users">{{u.getEmail()}}</li>
+        <li *ngFor="let u of users">{{u.first_name}}</li>
         <p>
 	</div>
 

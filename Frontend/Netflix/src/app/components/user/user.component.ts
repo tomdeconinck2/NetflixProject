@@ -4,11 +4,11 @@ import { UserService } from '../../services/user.service'
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
-  styleUrls: ['./user.component.css']
+  styleUrls: ['./../../app.component.css']
 })
 export class UserComponent implements OnInit {
-  public welcomeMessage;
-  public users;
+  welcomeMessage;
+  users;
 
   constructor(private userService: UserService) { }
 
@@ -21,7 +21,7 @@ export class UserComponent implements OnInit {
       data => {this.welcomeMessage = data},
       err => console.error(err),
       () => console.log('Welcome message loaded in user.components.ts')
-    )
+    );
   }
 
   getUsers(){
