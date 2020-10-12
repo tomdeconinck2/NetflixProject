@@ -5,6 +5,9 @@ kill $(lsof -t -i:8761)
 kill $(lsof -t -i:8080)
 kill $(lsof -t -i:8889)
 kill $(lsof -t -i:8888)
+kill $(lsof -t -i:8887)
+kill $(lsof -t -i:8886)
+kill $(lsof -t -i:8885)
 kill $(lsof -t -i:8901)
 kill $(lsof -t -i:4200)
 cd edge
@@ -40,23 +43,28 @@ cd movie/movie-data-collector
 mvn clean package
 java -jar ./target/movie-data-collector-0.0.1-SNAPSHOT.jar &
 cd ../..
-echo "backend started"
+sleep x
 
 cd user/feedbackService
 mvn clean package
 java -jar ./target/feedbackService-0.0.1-SNAPSHOT.jar &
 cd ../..
+sleep x
 
 cd user/ratingService
 mvn clean package
 java -jar ./target/ratingService-0.0.1-SNAPSHOT.jar &
-cd ../.. 
+cd ../..
+sleep x
 
 cd user/UserService
 mvn clean package
 java -jar ./target/UserService-0.0.1-SNAPSHOT.jar &
-cd ../.. 
+cd ../..
+sleep x
+
 echo "userservice started up"
+
 
 cd Frontend/Netflix
 npm start

@@ -10,20 +10,23 @@ import { MovieComponent } from './components/movie/movie.component';
 import { LoginService } from './services/login.service';
 import { MovieService } from './services/movie.service';
 import { MainComponent } from './components/main/main.component';
+import { UserService } from './services/user.service';
+import { UserComponent } from './components/user/user.component'
 
 @NgModule({
 	declarations: [
 		AppComponent,
 		LoginComponent,
 		MovieComponent,
-		MainComponent
+		MainComponent,
+		UserComponent
 	],
 	imports: [
 		BrowserModule,
 		AppRoutingModule,
 		HttpClientModule
 	],
-	providers: [LoginService, MovieService],
+	providers: [LoginService, MovieService, UserService],
 	bootstrap: [AppComponent]
 })
 
