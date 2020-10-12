@@ -21,4 +21,12 @@ export class MovieService {
 		console.log(this.x);
 		return this.x;
 	}
+
+	getMoviesOfDb() {
+		this.x = this.http.get('/server/db/explore');
+		console.log(this.x);
+		return this.x;
+	}
+
+
 }

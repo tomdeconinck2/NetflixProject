@@ -11,7 +11,9 @@ import { LoginService } from './services/login.service';
 import { MovieService } from './services/movie.service';
 import { MainComponent } from './components/main/main.component';
 import { UserService } from './services/user.service';
-import { UserComponent } from './components/user/user.component'
+import { UserComponent } from './components/user/user.component';
+import { RouteComponent } from './components/route/route.component';
+import { MovieDetailComponent } from './components/movie-detail/movie-detail.component';
 
 @NgModule({
 	declarations: [
@@ -19,7 +21,9 @@ import { UserComponent } from './components/user/user.component'
 		LoginComponent,
 		MovieComponent,
 		MainComponent,
-		UserComponent
+		UserComponent,
+		RouteComponent,
+		MovieDetailComponent
 	],
 	imports: [
 		BrowserModule,

@@ -17,40 +17,16 @@ export class MovieComponent implements OnInit {
 	constructor(private movieService: MovieService, private loginService: LoginService) { }
 
 	ngOnInit(): void {
-		//this.ping();
+		this.getMoviesOfDb()
 	}
 
 
-	ping() {
-		console.log("Pinged ")
-		this.loginService.ping();
-		this.loginService.ping().subscribe(
-			data => { this.s = String(data) },
-			err => { console.error(err); this.s = err.error.text },
-			() => console.log('bikes loaded')
-		);
-	}
 
-	getBestMovie() {
-		console.log(" Getting best movie ")
-		//this.loginService.ping();
-		this.movieService.getBestMovie();
-
-		this.movieService.getBestMovie().subscribe(
-			data => { console.log("Data"); this.movie = data },
-			err => { console.log("Error"); console.error(err); this.movie = err.error.text },
-			() => console.log('bikes loaded')
-		);
-
-	}
-
-
-	getMovies() {
+	getMoviesOfDb() {
 		console.log(" Getting movies ")
-		//this.loginService.ping();
-		this.movieService.getMovies();
+		this.movieService.getMoviesOfDb();
 
-		this.movieService.getMovies().subscribe(
+		this.movieService.getMoviesOfDb().subscribe(
 			data => { console.log("Data"); this.movies = data },
 			err => { console.log("Err"); console.error(err); this.movie = err.error.text },
 		);

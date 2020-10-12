@@ -1,34 +1,11 @@
 
 
-<div>
-
-	<button (click)="ping()">Ping backend</button>
-
-	<div>
-		<p>Message of the backend: {{s}}
-		<p>
-	</div>
-
-	<button (click)="getBestMovie()">Search best movie</button>
-
-	<div>
-		<p>Message of the backend: {{movie}}
-		<p>
-	</div>
-
-
-	<button (click)="getMovies()">List some movies:</button>
+Movies: 
 
 	<div>
 		<p>
 		<li *ngFor="let m of movies">{{ m.title }}</li>
 	</div>
-
-</div>
-
-
-
-
 
 
 
