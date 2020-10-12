@@ -42,4 +42,8 @@ zuul:
     explore:
       path: /explore/**
       service-id: trainingservice
+      
+    db:
+      path: /db/**
+      service-id: trainingservice
 #

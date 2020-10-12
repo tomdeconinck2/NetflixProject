@@ -1,13 +1,30 @@
+ Movies:
 
-
-Movies: 
-
-	<div>
-		<p>
-		<li *ngFor="let m of movies">{{ m.title }}</li>
-	</div>
-
-
+<!-->
+<div style="text-align: left">
+	<li *ngFor="let m of movies">{{ m.title }}</li>
+</div>
+</!-->
+x
 
 
 
+<table
+	class="table mat-table" datatable>
+	<thead>
+		<tr>
+			<th>ID</th>
+			<th>Title</th>
+			<th>Genre</th>
+			<th>Vote stats</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr *ngFor="let m of movies">
+		<td>{{m.movieId}}</td>
+			<td>{{m.title}}</td>
+			<td>{{m.mainGenre}}</td>
+			<td>{{m.score}} ( {{m.nbOfVotes}}  )</td>
+		</tr>
+	</tbody>
+</table>
