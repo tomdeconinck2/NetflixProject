@@ -44,6 +44,9 @@ public class CSVMovieHandler {
 			System.out.println("ERROR");
 			// e.printStackTrace();
 		}
+		
+		getStats();
+		System.out.println(getMoviesWithGenre("action"));
 
 	}
 
@@ -56,6 +59,7 @@ public class CSVMovieHandler {
 	}
 
 	private List<Movie> getMoviesWithGenre(String genre) {
+		//return movieList.stream().filter(a -> a.getGenre().equals(genre)).collect(Collectors.toList());
 		return movieList.stream().filter(a -> a.getGenre().equalsIgnoreCase(genre)).collect(Collectors.toList());
 	}
 

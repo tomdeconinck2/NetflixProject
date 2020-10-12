@@ -38,5 +38,8 @@ zuul:
     user-service:
       path: /user-service/**
       service-id: user-service
-
+    
+    explore:
+      path: /explore/**
+      service-id: trainingservice
 #

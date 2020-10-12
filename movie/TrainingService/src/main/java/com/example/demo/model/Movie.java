@@ -47,18 +47,8 @@ public class Movie {
 
 
 
-
-
-
-
-
-
-
-
-
-
 	public String getGenre() {
-		return "action";
+		return mainGenre;
 	}
 	
 }
