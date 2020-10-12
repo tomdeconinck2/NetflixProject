@@ -9,12 +9,12 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
   getUsers(){
-    console.log('Method getUsers in user.service.ts')
-    return this.http.get('/server/user-service/all')
+    console.log('Method getUsers in user.service.ts');
+    return this.http.get('/server/user-service/all');
   }
 
   getWelcomeMessage(){
-    return this.http.get('/server/user-service/')
+    return this.http.get('/server/user-service/');
   }
 
   //TODO delete/save/... methods
