@@ -7,19 +7,19 @@ import { UserService } from '../../services/user.service'
   styleUrls: ['./../../app.component.css']
 })
 export class UserComponent implements OnInit {
-  welcomeMessage;
+  welcomeMessage: String;
   users;
+  error;
 
   constructor(private userService: UserService) { }
 
   ngOnInit(): void {
-    this.getUsers;
   }
 
   getWelcomeMessage(){
     this.userService.getWelcomeMessage().subscribe(
-      data => {this.welcomeMessage = data},
-      err => console.error(err),
+      data => {this.welcomeMessage = String(data)},
+      err => {console.error(err); this.error = err.error.text},
       () => console.log('Welcome message loaded in user.components.ts')
     );
   }

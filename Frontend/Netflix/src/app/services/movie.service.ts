@@ -10,14 +10,14 @@ export class MovieService {
 	constructor(private http: HttpClient) { }
 
 	getMovies() {
-		this.x = this.http.get('/movieserver/movies');
+		this.x = this.http.get('/server/movie/movies');
 		console.log(this.x);
 		return this.x;
 	}
 
 	getBestMovie() {
 
-		this.x = this.http.get('/movieserver/');
+		this.x = this.http.get('/server/movie/');
 		console.log(this.x);
 		return this.x;
 	}

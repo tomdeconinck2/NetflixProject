@@ -45,20 +45,20 @@ public class User {
 		this.setDateLastChanged(new Date());
 	}
 	
-	public String getName() {
+	public String getFirstName() {
 		return first_name;
 	}
 	
-	public void setName(String name) {
+	public void setFirstName(String name) {
 		this.first_name = name;
 		this.setDateLastChanged(new Date());
 	}
 	
-	public String getLast_name() {
+	public String getLastName() {
 		return last_name;
 	}
 	
-	public void setLast_name(String last_name) {
+	public void setLastName(String last_name) {
 		this.last_name = last_name;
 	}
 	
