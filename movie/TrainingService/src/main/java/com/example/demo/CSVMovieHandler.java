@@ -1,26 +1,27 @@
 package com.example.demo;
 
-import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import com.example.demo.model.Movie;
+import org.springframework.stereotype.Service;
 
+import com.example.demo.model.Movie;
 import com.opencsv.bean.CsvToBean;
 import com.opencsv.bean.CsvToBeanBuilder;
 
+@Service
 public class CSVMovieHandler {
 
-	List<Movie> movieList = new ArrayList<Movie>();
+	public List<Movie> movieList = new ArrayList<Movie>();
 	String fileName = "trainingset/movies_metadata_small.csv";
+	
+	public CSVMovieHandler() {
+		System.out.println("TEST ");
+		this.read();
+	}
 
 	public void read() {
 		try {

@@ -1,9 +1,6 @@
 package com.example.demo.model;
 
-import java.util.LinkedList;
-import java.util.List;
-
-import com.opencsv.bean.CsvBindAndSplitByName;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.opencsv.bean.CsvBindByName;
 
 public class Movie {
@@ -46,9 +43,81 @@ public class Movie {
 
 
 
+	public int getMovieId() {
+		return movieId;
+	}
 
+
+
+	public void setMovieId(int movieId) {
+		this.movieId = movieId;
+	}
+
+
+
+	public String getTitle() {
+		return title;
+	}
+
+
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+
+	@JsonIgnore
 	public String getGenre() {
+		return genre;
+	}
+
+
+
+	public void setGenre(String genre) {
+		this.genre = genre;
+	}
+
+
+
+	public String getMainGenre() {
 		return mainGenre;
 	}
+
+
+
+	public void setMainGenre(String mainGenre) {
+		this.mainGenre = mainGenre;
+	}
+
+
+
+	public double getScore() {
+		return score;
+	}
+
+
+
+	public void setScore(double score) {
+		this.score = score;
+	}
+
+
+
+	public int getNbOfVotes() {
+		return nbOfVotes;
+	}
+
+
+
+	public void setNbOfVotes(int nbOfVotes) {
+		this.nbOfVotes = nbOfVotes;
+	}
+
+
+
+	
+	
+
+
 	
 }
