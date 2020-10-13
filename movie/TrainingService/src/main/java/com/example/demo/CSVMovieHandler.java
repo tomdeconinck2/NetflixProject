@@ -9,6 +9,7 @@ import java.util.stream.Collectors;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.model.Movie;
+import com.example.demo.model.MovieDetail;
 import com.opencsv.bean.CsvToBean;
 import com.opencsv.bean.CsvToBeanBuilder;
 
@@ -61,7 +62,13 @@ public class CSVMovieHandler {
 
 	private List<Movie> getMoviesWithGenre(String genre) {
 		//return movieList.stream().filter(a -> a.getGenre().equals(genre)).collect(Collectors.toList());
-		return movieList.stream().filter(a -> a.getGenre().equalsIgnoreCase(genre)).collect(Collectors.toList());
+		return movieList.stream().filter(m -> m.getGenre().equalsIgnoreCase(genre)).collect(Collectors.toList());
+	}
+	
+	
+	
+	public List<Movie> getMovieDetailsForMovie(int id){
+		return movieList.stream().filter(m -> m.getMovieId() == id).collect(Collectors.toList());
 	}
 
 

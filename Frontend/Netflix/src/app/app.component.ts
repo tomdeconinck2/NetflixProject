@@ -19,7 +19,6 @@ export class AppComponent {
 
 	getUserName() {
 		console.log("Pinged ")
-		this.loginService.ping();
 		this.loginService.getUserName().subscribe(
 			data => { this.username = String(data) },
 			err => { console.error(err); this.username = err.error.text },

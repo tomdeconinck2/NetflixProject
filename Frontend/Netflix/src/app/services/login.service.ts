@@ -23,16 +23,11 @@ export class LoginService {
 	}
 
 	ping() {
-		console.log("Service pinged ")
-		this.x = this.http.get('/server/test');
-		console.log(this.x)
-		return this.x
-		//return this.http.get('/server/test1')
+		return this.http.get('/server/test');
 	}
 	
 	getUserName(){
-		this.x = this.http.get('/server/username');
-		return this.x;
+		return this.http.get('/server/username');
 	}
 	
 

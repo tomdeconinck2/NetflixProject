@@ -1,13 +1,4 @@
- Movies:
-
-<!-->
-<div style="text-align: left">
-	<li *ngFor="let m of movies">{{ m.title }}</li>
-</div>
-</!-->
-x
-
-
+<h1> Movie explorer page: </h1>
 
 <table class="table mat-table" datatable>
 	<thead>
@@ -24,6 +15,7 @@ x
 			<td>{{m.title}}</td>
 			<td>{{m.mainGenre}}</td>
 			<td>{{m.score}} ( {{m.nbOfVotes}} )</td>
+			<a [routerLink]="['/movie/detail', m.movieId]"> Explore </a>
 		</tr>
 	</tbody>
 </table>

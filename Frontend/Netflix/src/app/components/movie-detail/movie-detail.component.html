@@ -1,1 +1,16 @@
-<p>movie-detail works!</p>
+<h1>Movie details page:  {{details.title}}  </h1>
+
+<a [routerLink]="['/movie']"> Back </a>
+
+<p></p>
+
+<table> 
+<tr> <th> Id  </th>  <th> {{details.movieId}} </th> </tr>
+<tr> <th> Title </th>  <th> {{details.title}} </th> </tr>
+<tr> <th> Genre </th>  <th>  {{details.mainGenre}}</th> </tr>
+<tr> <th> Stats </th>  <th>  {{details.score}} ( {{details.nbOfVotes}} )   </th> </tr>
+</table>
+
+
+
+
