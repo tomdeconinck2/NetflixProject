@@ -17,39 +17,27 @@ export class RouteComponent implements OnInit {
 	constructor(private movieService: MovieService, private loginService: LoginService) { }
 
 	ngOnInit(): void {
-		//this.ping();
 	}
 
 
 	ping() {
 		console.log("Pinged ")
-		this.loginService.ping();
 		this.loginService.ping().subscribe(
 			data => { this.s = String(data) },
 			err => { console.error(err); this.s = err.error.text },
-			() => console.log('bikes loaded')
 		);
 	}
 
 	getBestMovie() {
-		console.log(" Getting best movie ")
-		//this.loginService.ping();
-		this.movieService.getBestMovie();
-
 		this.movieService.getBestMovie().subscribe(
-			data => { console.log("Data"); this.movie = data },
+			data => { console.log("Data"); this.movie = data[0] },
 			err => { console.log("Error"); console.error(err); this.movie = err.error.text },
-			() => console.log('bikes loaded')
 		);
 
 	}
 
-
 	getMovies() {
 		console.log(" Getting movies ")
-		//this.loginService.ping();
-		this.movieService.getMovies();
-
 		this.movieService.getMovies().subscribe(
 			data => { console.log("Data"); this.movies = data },
 			err => { console.log("Err"); console.error(err); this.movie = err.error.text },

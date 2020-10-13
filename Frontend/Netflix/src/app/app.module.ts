@@ -1,8 +1,15 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import {BrowserAnimationsModule} from '@angular/platform browser/animations';
-import { MatInputModule, MatPaginatorModule, MatProgressSpinnerModule, MatSortModule, MatTableModule } from "@angular/material";
+import { MatInputModule } from '@angular/material/input';
+import { MatPaginatorModule, } from '@angular/material/paginator';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatSortModule, } from '@angular/material/sort';
+import { MatTableModule } from '@angular/material/table';
+
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -32,10 +39,11 @@ import { MovieDetailComponent } from './components/movie-detail/movie-detail.com
 		AppRoutingModule,
 		HttpClientModule,
 		MatInputModule,
-        MatTableModule,
-        MatPaginatorModule,
-        MatSortModule,
-        MatProgressSpinnerModule
+		MatTableModule,
+		MatPaginatorModule,
+		MatSortModule,
+		MatProgressSpinnerModule,
+		BrowserAnimationsModule
 	],
 	providers: [LoginService, MovieService, UserService],
 	bootstrap: [AppComponent]

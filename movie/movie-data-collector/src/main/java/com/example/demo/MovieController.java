@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -20,10 +22,14 @@ public class MovieController {
 		this.mr = mr;
 	}
 
+	@GetMapping("/old")
+	public String getOld() {
+		return "Best moviee is: " + mss.getBestMovie();
+	}
+	
 	@GetMapping("/")
-	public String get2() {
-		// return m.movieList.get(0).title;
-		return "Best movie is: " + mss.getBestMovie();
+	public ResponseEntity<String> get2() {
+		return new ResponseEntity<>(" Best movie is:  " + mss.getBestMovie(), HttpStatus.ACCEPTED); 
 	}
 
 	@GetMapping("/movies")

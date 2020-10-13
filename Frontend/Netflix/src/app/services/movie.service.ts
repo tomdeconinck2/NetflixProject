@@ -5,28 +5,27 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 	providedIn: 'root'
 })
 export class MovieService {
-	x;
+
+
+	x; y;
 
 	constructor(private http: HttpClient) { }
 
 	getMovies() {
-		this.x = this.http.get('/server/movie/movies');
-		console.log(this.x);
-		return this.x;
+		return this.http.get('/server/movie/movies');
 	}
 
 	getBestMovie() {
-
-		this.x = this.http.get('/server/movie/');
-		console.log(this.x);
-		return this.x;
+		return this.http.get('/server/movie/');
 	}
+
 
 	getMoviesOfDb() {
-		this.x = this.http.get('/server/db/explore');
-		console.log(this.x);
-		return this.x;
+		return this.http.get('/server/db/explore');
 	}
 
+	getMovieDetails(id: any) {
+		return this.http.get('/server/db/detail?id=' + id)
+	}
 
 }
