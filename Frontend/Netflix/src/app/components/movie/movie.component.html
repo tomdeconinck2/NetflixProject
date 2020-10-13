@@ -9,8 +9,7 @@ x
 
 
 
-<table
-	class="table mat-table" datatable>
+<table class="table mat-table" datatable>
 	<thead>
 		<tr>
 			<th>ID</th>
@@ -21,10 +20,10 @@ x
 	</thead>
 	<tbody>
 		<tr *ngFor="let m of movies">
-		<td>{{m.movieId}}</td>
+			<td>{{m.movieId}}</td>
 			<td>{{m.title}}</td>
 			<td>{{m.mainGenre}}</td>
-			<td>{{m.score}} ( {{m.nbOfVotes}}  )</td>
+			<td>{{m.score}} ( {{m.nbOfVotes}} )</td>
 		</tr>
 	</tbody>
 </table>
