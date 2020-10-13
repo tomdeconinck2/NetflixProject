@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { MovieDetail } from '../components/movie/movie.component';
 
 @Injectable({
 	providedIn: 'root'
@@ -7,7 +8,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class MovieService {
 
 
-	x; y;
+	x;
 
 	constructor(private http: HttpClient) { }
 
@@ -24,8 +25,13 @@ export class MovieService {
 		return this.http.get('/server/db/explore');
 	}
 
-	getMovieDetails(id: any) {
+	//Without casting
+	getMovieDetailsWC(id: any) {
 		return this.http.get('/server/db/detail?id=' + id)
+	}
+	
+	getMovieDetails(id: any) {
+		return this.http.get<MovieDetail>('/server/db/detail?id=' + id)
 	}
 
 }
