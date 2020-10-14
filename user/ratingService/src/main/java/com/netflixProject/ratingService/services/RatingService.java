@@ -17,17 +17,25 @@ public class RatingService {
 	
 	@Autowired
 	RatingRepository ratingRepository;
-	
-	//TODO use these when wanting to set a new rating
-	private final int MIN_RATING = 0;
-	private final int MAX_RATING = 10;
+
+	/*
+	 * A rating must be between 0 and 10
+	 */
+	private static final int MIN_RATING = 0;
+	private static final int MAX_RATING = 10;
 	
 
+	/*
+	 * Return a list containing all ratings in the database
+	 */
 	public List<Rating> getAllRatings() {
 		return ratingRepository.findAll();	
 	}
 	
 
+	/*
+	 * return the rating for the given id
+	 */
 	public ResponseEntity<Rating> getRating(Long id) {
 		try {
 			Rating r = ratingRepository.getOne(id);
@@ -38,9 +46,13 @@ public class RatingService {
 		}
 	}
 	
-
+	/*
+	 * Add the given rating to the database
+	 * If the rating already exists the previous rating gets overwritten
+	 */
 	public ResponseEntity<String> addRating(Rating rating) {
-		if(!ratingExists(rating)) {
+		if(isValidRating(rating)) {
+			deleteIfRatingExists(rating); //If the rating already exist the old rating must first be deleted so it can be overwritten
 			ratingRepository.save(rating);
 			return new ResponseEntity<>("New Rating added", HttpStatus.CREATED);
 		}
@@ -49,7 +61,9 @@ public class RatingService {
 		}
 	}
 
-
+	/*
+	 * Delete the rating with given id
+	 */
 	public ResponseEntity<String> deleteRating(Long id) {
 		try {
 			ratingRepository.deleteById(id);
@@ -60,15 +74,32 @@ public class RatingService {
 		}
 	}	
 	
-	
-	private boolean ratingExists(Rating rating) {
-		List<Rating> ratings = this.getAllRatings();
-		for(Rating otherRating: ratings) {
-			if(Rating.equals(otherRating, rating)) {
-				return true;
+	/*
+	 * Delete the same rating as the given rating if it exists
+	 * Ratings are the same when they have an equal user_id and movie_id
+	 */ 
+	public void deleteIfRatingExists(Rating rating) {
+		Long idToDelete = null;
+		List<Rating> allRatings = getAllRatings();
+		
+		for(Rating r : allRatings) {
+			if(Rating.equals(r, rating)) {
+				idToDelete = r.getId();
 			}
 		}
-		return false;
+		
+		if(idToDelete != null) {
+			deleteRating(idToDelete);
+		}
+		
+	}
+	
+	/*
+	 * Check if the given rating is a valid rating.
+	 * A rating is valid if it is in the range [MIN_RATING, MAX_RATING]
+	 */
+	private boolean isValidRating(Rating rating) {
+		return rating.getRating() >= MIN_RATING && rating.getRating() <= MAX_RATING;
 	}
 
 }

@@ -94,7 +94,7 @@ public class Rating {
 		Long m1 = r1.getMovieId();
 		Long m2 = r2.getMovieId();
 		
-		return (!u1.equals(u2)) && (!m1.equals(m2));
+		return (u1.equals(u2) && m1.equals(m2));
 	}
 
 }
