@@ -1,29 +1,27 @@
-
+<h1>User Overview for admins</h1>
 
 <div>
-
-	<button (click)="getUsers()">All users</button>
-
-	<div>
-		<p>
-		<li *ngFor="let u of users">{{u.email}}</li>
-		</p>
-		<br>
-	</div>
-
-	<button (click)="getWelcomeMessage()">Welcome Message</button>
-
-	<div>
-		<p>Message: {{error}}</p>
-	</div>
+	<table id="table_big">
+		<thead>
+			<tr>
+				<th>First Name</th>
+				<th>Last Name</th>
+				<th>Email</th>
+				<th>Date created</th>
+				<th>Date Last Changed</th>
+				<th>Personal User Page</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr *ngFor="let u of users">
+				<td>{{u.firstName}}</td>
+				<td>{{u.lastName}}</td>
+				<td>{{u.email}}</td>
+				<td>{{u.date_created}}</td>
+				<td>{{u.date_last_changed}}</td>
+				<td><a [routerLink]="['./', u.id]"> Personal user page of <em>{{u.email}}</em></a></td>
+			</tr>
+		</tbody>
+	</table>
 
 </div>
-
-
-
-
-
-
-
-
-

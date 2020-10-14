@@ -31,10 +31,23 @@ public class Rating {
 	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy@HH:mm:ss")
 	private Date date_last_changed = new Date();	
 	
-	
+	/*
+	 * Default constructor
+	 */
 	public Rating() {
 	}
 	
+	
+	public Rating(Long userId, Long movieId, int rating) {
+		this.user_id = userId;
+		this.movie_id = movieId;
+		this.rating = rating;
+	}
+	
+	
+	/*
+	 * Standard getters and setters for all attributes
+	 */
 	public Long getId() {
 		return id;
 	}

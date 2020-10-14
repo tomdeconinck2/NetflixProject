@@ -23,6 +23,9 @@ import { UserService } from './services/user.service';
 import { UserComponent } from './components/user/user.component';
 import { RouteComponent } from './components/route/route.component';
 import { MovieDetailComponent } from './components/movie-detail/movie-detail.component';
+import { RatingComponent } from './components/rating/rating.component';
+import { RatingService } from './services/rating.service';
+import { SpecificUserComponent } from './components/specific-user/specific-user.component';
 
 @NgModule({
 	declarations: [
@@ -32,7 +35,9 @@ import { MovieDetailComponent } from './components/movie-detail/movie-detail.com
 		MainComponent,
 		UserComponent,
 		RouteComponent,
-		MovieDetailComponent
+		MovieDetailComponent,
+		RatingComponent,
+		SpecificUserComponent
 	],
 	imports: [
 		BrowserModule,
@@ -45,7 +50,7 @@ import { MovieDetailComponent } from './components/movie-detail/movie-detail.com
 		MatProgressSpinnerModule,
 		BrowserAnimationsModule
 	],
-	providers: [LoginService, MovieService, UserService],
+	providers: [LoginService, MovieService, UserService, RatingService],
 	bootstrap: [AppComponent]
 })
 

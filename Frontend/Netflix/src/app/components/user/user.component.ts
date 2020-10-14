@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../../services/user.service'
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-user',
@@ -7,21 +7,13 @@ import { UserService } from '../../services/user.service'
   styleUrls: ['./../../app.component.css']
 })
 export class UserComponent implements OnInit {
-  welcomeMessage: String;
   users;
-  error;
 
-  constructor(private userService: UserService) { }
-
-  ngOnInit(): void {
+  constructor(private userService: UserService) { 
+    this.getUsers();
   }
 
-  getWelcomeMessage(){
-    this.userService.getWelcomeMessage().subscribe(
-      data => {this.welcomeMessage = String(data)},
-      err => {console.error(err); this.error = err.error.text},
-      () => console.log('Welcome message loaded in user.components.ts')
-    );
+  ngOnInit(): void {
   }
 
   getUsers(){
@@ -31,5 +23,4 @@ export class UserComponent implements OnInit {
       () => console.log('users loaded in user.component.ts')
     );
   }
-
 }

@@ -1,0 +1,22 @@
+<h1> Ratings page: </h1>
+
+<div>
+
+    <table id="table_big">
+        <thead>
+            <tr>
+                <th>Id of User</th>
+                <th>Id of Movie</th>
+                <th>Rating</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let r of ratings">
+                <td>{{r.userId}}</td>
+                <td>{{r.movieId}}</td>
+                <td>{{r.rating}}</td>
+            </tr>
+        </tbody>
+    </table>
+    
+</div>
