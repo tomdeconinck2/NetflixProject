@@ -7,7 +7,7 @@ import { MatTableDataSource } from '@angular/material/table';
 @Component({
 	selector: 'app-movie',
 	templateUrl: './movie.component.html',
-	styleUrls: ['./../../app.component.css']
+	//styleUrls: ['./../../app.component.css']
 })
 export class MovieComponent implements OnInit {
 
