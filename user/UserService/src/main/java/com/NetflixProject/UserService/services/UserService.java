@@ -23,10 +23,16 @@ public class UserService {
 	private UserRatingClient urc;
 	
 	
+	/*
+	 * Get a list of all users in the database
+	 */
 	public List<User> getAllUsers() {
 		return this.userRepository.findAll();	
 	}
 	
+	/*
+	 * Get the user with given id
+	 */
 	public ResponseEntity<User> getUser(Long id) {
 		try {
 			User u = this.userRepository.getOne(id);
@@ -37,6 +43,10 @@ public class UserService {
 		}
 	}
 	
+	/*
+	 * Add the given user to the database
+	 * Only allowed when there is no user with the given email address
+	 */
 	public ResponseEntity<String> addNewUser(User user) {
 		if(! userExists(user)){
 			this.userRepository.save(user);
@@ -47,6 +57,9 @@ public class UserService {
 		}
 	}	
 
+	/*
+	 * Delete the user with given id from the database
+	 */
 	public ResponseEntity<String> deleteUser(Long id){
 		try {
 			//TODO also delete all the users Ratings, feedbacks and subscriptions
@@ -58,7 +71,9 @@ public class UserService {
 		}
 	}
 	
-	
+	/*
+	 * Change the email address from the user with given id
+	 */
 	public ResponseEntity<String> changeEmail(Long id, String newEmail){
 		if(!emailExists(newEmail)) {
 			User user = this.userRepository.getOne(id);
@@ -68,13 +83,15 @@ public class UserService {
 		return new ResponseEntity<String>("The given email address is already assigned to a user", HttpStatus.PRECONDITION_FAILED);
 	}
 	
-	
-	public ResponseEntity<String> getRatingsOfUser(Long id){
+	/*
+	 * Get a list of ratings from the user with given id
+	 */
+	public ResponseEntity<List<Object>> getRatingsOfUser(Long id){
 		if(userExists(id)) {
-			String ratings = this.urc.getRatingsOfUser(id);			
-			return new ResponseEntity<String>(ratings, HttpStatus.OK);
+			List<Object> ratings = this.urc.getRatingsOfUser(id);
+			return new ResponseEntity<List<Object>>(ratings, HttpStatus.OK);
 		}
-		return new ResponseEntity<String>("The given user does not exist", HttpStatus.NOT_FOUND);
+		return new ResponseEntity<List<Object>>(HttpStatus.NOT_FOUND);
 	}
 	
 	

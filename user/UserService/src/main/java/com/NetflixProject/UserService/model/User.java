@@ -29,12 +29,20 @@ public class User {
 	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy@HH:mm:ss")
 	private Date date_last_changed = new Date();
 	
-	
+	/*
+	 * default constructor
+	 */
 	public User() {
 	}
 	
+	public User(String firstName, String lastName, String email) {
+		this.first_name = firstName;
+		this.last_name = lastName;
+		this.email = email;
+	}
+	
 	/*
-	 * Getters and setters for the above variables
+	 * Standard getters and setters for all the variables
 	 */
 	public Long getId() {
 		return id;
