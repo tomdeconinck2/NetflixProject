@@ -21,10 +21,42 @@ td.mat-cell:last-child {
   border-right: 1px solid #ffa600;
 }
 
-table {
-  /* row spacing / margin */
-  border-spacing: 0 8px !important;
-} 
+
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+}
+th, td {
+  padding: 15px;
+  text-align: center;
+}
+
+tr:nth-child(even) {
+  background-color: #eee;
+}
+tr:nth-child(odd) {
+ background-color: #fff;
+}
+
+#table_big{
+  width:100%
+}
+
+#table_big th {
+  background-color: black;
+  color: white;
+}
+
+#table_small{
+  width:25%
+}
+
+#table_small th {
+  background-color: grey;
+  color: white;
+}
 
 
 

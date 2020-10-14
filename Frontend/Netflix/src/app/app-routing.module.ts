@@ -5,7 +5,9 @@ import { MovieComponent } from './components/movie/movie.component';
 import { MainComponent } from './components/main/main.component';
 import { UserComponent } from './components/user/user.component';
 import { RouteComponent } from './components/route/route.component';
+import { RatingComponent } from './components/rating/rating.component'
 import { MovieDetailComponent } from './components/movie-detail/movie-detail.component';
+import { SpecificUserComponent } from './components/specific-user/specific-user.component';
 
 const routes: Routes = [
 	{
@@ -35,6 +37,14 @@ const routes: Routes = [
 	{
 		path: 'user',
 		component: UserComponent
+	},
+	{
+		path: 'user/:id',
+		component: SpecificUserComponent
+	},
+	{
+		path: 'rating',
+		component: RatingComponent
 	},
 
 

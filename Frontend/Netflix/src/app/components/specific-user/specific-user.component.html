@@ -1,0 +1,23 @@
+<table> 
+    <tr> <th> First Name </th>  <th> {{user.firstName}} </th> </tr>
+    <tr> <th> Last Name </th>  <th>  {{user.lastName}}</th> </tr>
+    <tr> <th> Email </th>  <th>  {{user.email}}  </th> </tr>
+</table>
+
+<br><br>
+
+
+<table id="table_small">
+    <thead>
+        <tr>
+            <th>Id of Movie</th>
+            <th>Rating</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let r of ratings">
+            <td>{{r.movieId}}</td>
+            <td>{{r.rating}}</td>
+        </tr>
+    </tbody>
+</table>

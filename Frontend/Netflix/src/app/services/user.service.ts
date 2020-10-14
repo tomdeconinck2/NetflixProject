@@ -13,8 +13,12 @@ export class UserService {
     return this.http.get('/server/user-service/all');
   }
 
-  getWelcomeMessage(){
-    return this.http.get('/server/user-service/');
+  getUser(id){
+    return this.http.get('/server/user-service/' + id)
+  }
+
+  getRatingsFromUser(id){
+    return this.http.get('/server/user-service/' + id + '/ratings')
   }
 
   //TODO delete/save/... methods
