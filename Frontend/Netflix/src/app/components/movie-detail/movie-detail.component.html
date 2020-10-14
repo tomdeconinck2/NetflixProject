@@ -4,6 +4,9 @@
 
 <p></p>
 
+<img src={{details.imageUrl}}/> 
+
+
 <table> 
 <tr> <th> Id  </th>  <th> {{details.movieId}} </th> </tr>
 <tr> <th> Title </th>  <th> {{details.title}} </th> </tr>
@@ -11,9 +14,11 @@
 <tr> <th> Stats </th>  <th>  {{details.score}} ( {{details.nbOfVotes}} )   </th> </tr>
 </table>
 
+
 <p> Description:  <br> {{details.description}} </p>
 
 <p>Link: <a href="//{{getMovieLink()}}" >  {{getMovieLink()}} </a>    </p> 
+
 
 
 

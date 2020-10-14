@@ -28,12 +28,18 @@ public class Movie {
 
 	@CsvBindByName(column = "imdb_id")
 	private String imdbIdString;
-	
+
 	private int imdbId;
 
 	@CsvBindByName(column = "overview")
 	private String description;
 
+	private String imageUrl;
+
+	private String movieUrl;
+
+	
+	// This method has to fill fields, with information that the CSV reader can't access. (Processing + Scraping
 	public void init() {
 		this.mainGenre = genre.split("name")[1].substring(4).split("'")[0];
 		this.imdbId = Integer.parseInt(this.imdbIdString.substring(2));
@@ -108,6 +114,31 @@ public class Movie {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	@JsonIgnore
+	public String getImdbIdString() {
+		return imdbIdString;
+	}
+
+	public void setImdbIdString(String imdbIdString) {
+		this.imdbIdString = imdbIdString;
+	}
+
+	public String getImageUrl() {
+		return imageUrl;
+	}
+
+	public void setImageUrl(String imageUrl) {
+		this.imageUrl = imageUrl;
+	}
+
+	public String getMovieUrl() {
+		return movieUrl;
+	}
+
+	public void setMovieUrl(String movieUrl) {
+		this.movieUrl = movieUrl;
 	}
 
 }

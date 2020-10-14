@@ -7,7 +7,7 @@ import { MatTableDataSource } from '@angular/material/table';
 @Component({
 	selector: 'app-movie',
 	templateUrl: './movie.component.html',
-	//styleUrls: ['./../../app.component.css']
+	// styleUrls: ['./../../app.component.css']
 })
 export class MovieComponent implements OnInit {
 
@@ -20,7 +20,9 @@ export class MovieComponent implements OnInit {
 	
 
 	movies;
-	displayedColumns: string[] = ['id', 'title', 'genre', 'voteStats', 'link'];
+	//displayedColumns: string[] = ['id', 'title',  'genre', 'voteStats', 'link'];
+	displayedColumns: string[] = ['image',  'title' ,'genre', 'voteStats', 'link'];
+	
 	movieTable: Object [] = [];
 	movieTableDS = new MatTableDataSource(this.movieTable);
 
