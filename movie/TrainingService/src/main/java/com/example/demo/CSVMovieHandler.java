@@ -37,7 +37,7 @@ public class CSVMovieHandler {
 				this.dataScraper.findMovieMediaUrls(movie);
 				System.out.println(movie.toString());
 			});
-			// this.dataScraper.findMovieMediaUrls(movieList.get(0));
+			//this.dataScraper.findMovieMediaUrls(movieList.get(0));
 
 			beans.getCapturedExceptions().stream().forEach((exception) -> { System.out.println("Inconsistent data:" + exception); });
 
