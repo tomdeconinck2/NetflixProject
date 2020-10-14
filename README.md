@@ -8,6 +8,7 @@ Install:
 3. Git
 4. npm (6.10<), test with npm -v
 5. Angular client (10.1<), test with ng --version
+6. git LFS
 
 To Run:
 1. Clone this repo to a local folder (git)
@@ -21,3 +22,5 @@ Possible Problems?
 1. If some errors occur that seem angular related. Try "npm install" and "npm start" at root folder.
 
 2. main.sh not working on windows? Contact Tom or Roy
+
+3. If traingService microservice throws a nullpointerException. Try "git lfs pull" at root folder and try to start the microservice again.
