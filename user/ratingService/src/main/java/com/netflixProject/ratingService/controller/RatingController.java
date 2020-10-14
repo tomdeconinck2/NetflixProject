@@ -45,6 +45,7 @@ public class RatingController {
 		List<Rating> ratings = this.getAllRatings();
 		return ratings.stream().filter(rating -> userId.equals(rating.getUserId())).collect(Collectors.toList());
 	}
+
 	
 	/*
 	 * Get the rating of given id

@@ -38,6 +38,12 @@ zuul:
     user-service:
       path: /user-service/**
       service-id: user-service
+    rating-service:
+      path: /rating-service/**
+      service-id: rating-service
+    feedback-service:
+      path: /feedback-service/**
+      service-id: feedback-service
     
     explore:
       path: /explore/**
