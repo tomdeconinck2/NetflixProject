@@ -20,35 +20,51 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 	
+	/*
+	 * Get a welcome message from the user service
+	 */
 	@GetMapping("/")
 	public String welcomeMessage() {
 		return "Welcome to the UserService microservice!";
 	}
 	
-	
+	/*
+	 * Get a list of all users in the database
+	 */
 	@GetMapping("/all")
 	public List<User> getAllUsers() {
 		return userService.getAllUsers();	
 	}
 
+	/*
+	 * Get the user with given id
+	 */
 	@GetMapping("/{id}")
 	public ResponseEntity<User> getUser(@PathVariable("id") Long id) {
 		return userService.getUser(id);
 	}
 	
+	/*
+	 * Add the new given user to the database
+	 */
 	@PostMapping("/addUser")
 	public ResponseEntity<String> addNewUser(@RequestBody User user) {
 		return userService.addNewUser(user);
 	}	
 
+	/*
+	 * Delete the user with given id from the database
+	 */
 	@DeleteMapping("/{id}")
 	public ResponseEntity<String> deleteUser(@PathVariable("id") Long id){
 		return userService.deleteUser(id);
 	}
 	
-	
+	/*
+	 * Get a list of all ratings from the user with given id
+	 */
 	@GetMapping("/{id}/ratings")
-	public ResponseEntity<String> getRatingsOfUser(@PathVariable("id") Long id){
+	public ResponseEntity<List<Object>> getRatingsOfUser(@PathVariable("id") Long id){
 		return userService.getRatingsOfUser(id);
 	}
 	
