@@ -30,5 +30,10 @@ export class MovieDetailComponent implements OnInit {
 		);
 
 	}
+	
+	getMovieLink(){
+		// return "https://www.imdb.com/title/tt" + this.details.imdbId;	
+		return "imdb.com/title/tt0" + this.details.imdbId;	
+	}
 
 }
