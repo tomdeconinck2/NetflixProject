@@ -7,7 +7,7 @@
 <img src={{details.imageUrl}}/> 
 
 
-<table> 
+<table style="margin-left:0"> 
 <tr> <th> Id  </th>  <th> {{details.movieId}} </th> </tr>
 <tr> <th> Title </th>  <th> {{details.title}} </th> </tr>
 <tr> <th> Genre </th>  <th>  {{details.mainGenre}}</th> </tr>
@@ -18,6 +18,17 @@
 <p> Description:  <br> {{details.description}} </p>
 
 <p>Link: <a href="//{{getMovieLink()}}" >  {{getMovieLink()}} </a>    </p> 
+
+<div> 
+ <h3> Trailer: </h3> 
+ <video width="640" height="380" src={{details.movieUrl}} controls> </video>  
+ </div>
+
+
+
+
+
+
 
 
 

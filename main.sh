@@ -45,6 +45,14 @@ java -jar ./target/movie-data-collector-0.0.1-SNAPSHOT.jar &
 cd ../..
 sleep x
 
+cd movie/TrainingService
+mvn clean package
+java -jar ./target/TrainingService-0.0.1-SNAPSHOT.jar &
+cd ../..
+sleep x
+
+
+
 cd user/feedbackService
 mvn clean package
 java -jar ./target/feedbackService-0.0.1-SNAPSHOT.jar &
