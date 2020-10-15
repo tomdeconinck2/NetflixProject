@@ -31,7 +31,8 @@
 <br><br>
 
 <div style="border: 2px solid black; width: '40%'; text-align: center; margin-left: auto; margin-right: auto;">
-    <form [formGroup]="ratingForm" (ngSubmit)="addRating()" novalidate>
+    <h4><u>Add or change the rating of a movie</u></h4><br>
+    <form [formGroup]="ratingForm" (ngSubmit)="addRating();" novalidate>
         <div *ngIf="validMessage != '/'">
             <h3 class="has-info">{{validMessage}}</h3>
           </div>
