@@ -33,5 +33,9 @@ export class MovieService {
 	getMovieDetails(id: any) {
 		return this.http.get<MovieDetail>('/server/db/detail?id=' + id)
 	}
+	
+	getMovieStream(){
+		return this.http.get('/server/stream/test') //TODO use Id
+	}
 
 }

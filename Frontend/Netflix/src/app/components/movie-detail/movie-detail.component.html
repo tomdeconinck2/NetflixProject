@@ -23,6 +23,11 @@
  <h3> Trailer: </h3> 
  <video width="640" height="380" src={{details.movieUrl}} controls> </video>  
  </div>
+ 
+ <div style="text-align:left;font-size:30px">
+ <a [routerLink]="['/movie/stream', details.movieId]"  > 
+ Watch now </a>
+ </div>
 
 
 

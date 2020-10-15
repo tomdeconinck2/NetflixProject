@@ -26,6 +26,7 @@ import { MovieDetailComponent } from './components/movie-detail/movie-detail.com
 import { RatingComponent } from './components/rating/rating.component';
 import { RatingService } from './services/rating.service';
 import { SpecificUserComponent } from './components/specific-user/specific-user.component';
+import { MovieStreamComponent } from './components/movie-stream/movie-stream.component';
 
 @NgModule({
 	declarations: [
@@ -37,7 +38,8 @@ import { SpecificUserComponent } from './components/specific-user/specific-user.
 		RouteComponent,
 		MovieDetailComponent,
 		RatingComponent,
-		SpecificUserComponent
+		SpecificUserComponent,
+		MovieStreamComponent
 	],
 	imports: [
 		BrowserModule,

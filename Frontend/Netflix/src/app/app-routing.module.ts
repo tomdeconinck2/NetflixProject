@@ -8,6 +8,7 @@ import { RouteComponent } from './components/route/route.component';
 import { RatingComponent } from './components/rating/rating.component'
 import { MovieDetailComponent } from './components/movie-detail/movie-detail.component';
 import { SpecificUserComponent } from './components/specific-user/specific-user.component';
+import { MovieStreamComponent } from './components/movie-stream/movie-stream.component';
 
 const routes: Routes = [
 	{
@@ -21,6 +22,10 @@ const routes: Routes = [
 	{
 		path: 'movie/detail/:id',
 		component: MovieDetailComponent
+	},
+	{
+		path: 'movie/stream/:id',
+		component: MovieStreamComponent
 	},
 	{
 		path: '',

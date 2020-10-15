@@ -52,4 +52,8 @@ zuul:
     db:
       path: /db/**
       service-id: trainingservice
+      
+    stream:  
+      path: /stream/**
+      service-id: streamservice
 #
