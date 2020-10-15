@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { throwError } from 'rxjs';
 import { RatingService } from 'src/app/services/rating.service';
 import { UserService } from 'src/app/services/user.service';
 
@@ -12,13 +11,14 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class SpecificUserComponent implements OnInit {
   user_id: number;
+  rating_value_options: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   ratingForm: FormGroup;
   user;
   ratings;
-  error;
+  error = "/";
   refresh = "nope";
 
-  validMessage: string = "";
+  validMessage: string = "/";
 
   
   constructor(private userService: UserService, private route: ActivatedRoute, private ratingService: RatingService) { }
@@ -29,8 +29,8 @@ export class SpecificUserComponent implements OnInit {
     this.getRatingsFromUser();
 
     this.ratingForm = new FormGroup({
-      user_id: new FormControl('', Validators.required),
-      movie_id: new FormControl('', Validators.required),
+      userId: new FormControl(this.user_id),
+      movieId: new FormControl('', Validators.required),
       rating: new FormControl('', Validators.required)
     })
 
@@ -51,12 +51,12 @@ export class SpecificUserComponent implements OnInit {
 		);
   }
 
-  addRating(): void{
+  addRating(){
     if(this.ratingForm.valid){
       this.validMessage = "Your new rating has been succesfully added. Thank you!";
       this.ratingService.addRating(this.ratingForm.value).subscribe(
-        data => { this.ratingForm.reset(); },
-        error => { return throwError(error);}
+        data => { this.ratingForm.reset(); return true},
+        error => { this.error=error.err.text;}
       )
     } 
     else{

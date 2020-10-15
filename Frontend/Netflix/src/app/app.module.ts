@@ -6,6 +6,7 @@ import { MatPaginatorModule, } from '@angular/material/paginator';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSortModule, } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
+import { ReactiveFormsModule} from '@angular/forms'
 
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -48,7 +49,8 @@ import { SpecificUserComponent } from './components/specific-user/specific-user.
 		MatPaginatorModule,
 		MatSortModule,
 		MatProgressSpinnerModule,
-		BrowserAnimationsModule
+		BrowserAnimationsModule,
+		ReactiveFormsModule
 	],
 	providers: [LoginService, MovieService, UserService, RatingService],
 	bootstrap: [AppComponent]
