@@ -10,7 +10,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import com.NetflixProject.UserService.model.User;
 import com.example.demo.model.Rating;
 
 
