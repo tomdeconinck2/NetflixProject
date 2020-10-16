@@ -10,6 +10,7 @@
 				<th>Date created</th>
 				<th>Date Last Changed</th>
 				<th>Personal User Page</th>
+				<th>Delete User</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -20,6 +21,7 @@
 				<td>{{u.date_created}}</td>
 				<td>{{u.date_last_changed}}</td>
 				<td><a [routerLink]="['./', u.id]"> Personal user page of <em>{{u.email}}</em></a></td>
+				<td><button (click)="deleteUser(u.id);"> Delete User </button></td>
 			</tr>
 		</tbody>
 	</table>

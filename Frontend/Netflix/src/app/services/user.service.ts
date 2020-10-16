@@ -21,6 +21,8 @@ export class UserService {
     return this.http.get('/server/user-service/' + id + '/ratings')
   }
 
-  //TODO delete/save/... methods
+  deleteUser(user_id){
+    return this.http.delete('server/user-service/' + user_id);
+  }
 
 }
