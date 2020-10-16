@@ -35,7 +35,7 @@
     <form [formGroup]="ratingForm" (ngSubmit)="addRating();" novalidate>
         <div *ngIf="validMessage != '/'">
             <h3 class="has-info">{{validMessage}}</h3>
-          </div>
+        </div>
         <div class="form-group">
             <label>Id of the Movie:</label>
             <input type="text" class="form-control" formControlName="movieId" required/>
