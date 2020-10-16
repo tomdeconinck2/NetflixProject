@@ -75,6 +75,16 @@ public class RatingService {
 	}	
 	
 	/*
+	 * Delete all the ratings of the given user
+	 */
+	public void deleteRatingsOfUser(Long userId) {
+		List<Rating> allRatings = this.getAllRatings();		
+		allRatings.stream()
+					.filter(r -> r.getUserId() == userId)
+					.forEach(r -> this.deleteRating(r.getId()));
+	}
+	
+	/*
 	 * Delete the same rating as the given rating if it exists
 	 * Ratings are the same when they have an equal user_id and movie_id
 	 */ 

@@ -45,6 +45,14 @@ public class RatingController {
 		List<Rating> ratings = this.getAllRatings();
 		return ratings.stream().filter(rating -> userId.equals(rating.getUserId())).collect(Collectors.toList());
 	}
+	
+	/*
+	 * Delete all the ratings of the given user
+	 */
+	@DeleteMapping("/ratingsOfUser/{userId}")
+	public void deleteRatingsOfUser(@PathVariable("userId") Long userId){
+		ratingService.deleteRatingsOfUser(userId);
+	}
 
 	
 	/*
