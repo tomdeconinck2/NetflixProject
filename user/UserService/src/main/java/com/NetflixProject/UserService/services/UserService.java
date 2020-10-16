@@ -59,11 +59,13 @@ public class UserService {
 
 	/*
 	 * Delete the user with given id from the database
+	 * It's corresponding ratings and subscriptions will also be deleted
 	 */
 	public ResponseEntity<String> deleteUser(Long id){
 		try {
-			//TODO also delete all the users Ratings, feedbacks and subscriptions
 			this.userRepository.deleteById(id);
+			this.urc.deleteRatingsOfUser(id);
+			//TODO also delete user's subscriptions
 			return new ResponseEntity<String>("User deleted",HttpStatus.OK);
 		}
 		catch(IllegalArgumentException e) {
