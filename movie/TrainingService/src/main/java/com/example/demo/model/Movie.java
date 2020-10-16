@@ -1,10 +1,15 @@
 package com.example.demo.model;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.opencsv.bean.CsvBindByName;
 
+@Entity
 public class Movie {
 
+	@Id
 	@CsvBindByName(column = "id")
 	private int movieId;
 

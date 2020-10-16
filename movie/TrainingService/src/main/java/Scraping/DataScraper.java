@@ -10,8 +10,16 @@ import org.jsoup.select.Elements;
 import com.example.demo.model.Movie;
 
 public class DataScraper {
+	
+	boolean doScraping = false; // Disable here for faster run + (reduce chanche of being IP-blacklisted-
 
 	public void findMovieMediaUrls(Movie movie) {
+		
+		if (doScraping == false) {
+			movie.setImageUrl("/");
+			movie.setMovieUrl("/");
+			return;
+		}
 
 		System.out.println("- - - - -Started Scraping - - - -- - - ");
 

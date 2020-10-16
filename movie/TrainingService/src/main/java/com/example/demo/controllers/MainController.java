@@ -9,11 +9,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.CSVMovieHandler;
 import com.example.demo.model.Movie;
+import com.example.demo.repositories.MovieRepository;
 
 @RestController
 public class MainController {
-	
-	
+
+	// The code below, uses the the CSV reader. //TODO go to solution that uses db as intermediate
 	@Autowired 
 	CSVMovieHandler csvMov;
 	
@@ -37,11 +38,19 @@ public class MainController {
 		return csvMov.getMovieDetailsForMovie(Integer.parseInt(id));
 	}
 	
-	
-	
 	@RequestMapping("/")
 	public String home() {
 		return "HOME";
+	}
+	
+	//db solution:
+	
+	@Autowired
+	MovieRepository movieRepository;
+	
+	@RequestMapping("/dbExplore")
+	public List<Movie> dbExplore() {
+		return movieRepository.findAll();
 	}
 	
 	
