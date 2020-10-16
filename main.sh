@@ -22,12 +22,6 @@ mvn clean package
 java -jar ./target/config-server-0.0.1-SNAPSHOT.jar &
 cd ../..
 
-cd test
-mvn clean package
-java -jar ./target/test-0.0.1-SNAPSHOT.jar &
-cd ..
-sleep x
-
 echo "MOVIE PACKAGE STARTUPS: "
 cd movie/movie-data-collector
 mvn clean package

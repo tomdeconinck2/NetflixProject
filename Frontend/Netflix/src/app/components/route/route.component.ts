@@ -21,7 +21,6 @@ export class RouteComponent implements OnInit {
 
 
 	ping() {
-		console.log("Pinged ")
 		this.loginService.ping().subscribe(
 			data => { this.s = String(data) },
 			err => { console.error(err); this.s = err.error.text },
@@ -37,7 +36,6 @@ export class RouteComponent implements OnInit {
 	}
 
 	getMovies() {
-		console.log(" Getting movies ")
 		this.movieService.getMovies().subscribe(
 			data => { console.log("Data"); this.movies = data },
 			err => { console.log("Err"); console.error(err); this.movie = err.error.text },

@@ -17,9 +17,7 @@ export class LoginService {
 
 	getLogin() {
 		let token = localStorage.getItem('access_token');
-		return this.http.get('/server/login'//,
-			// {headers: new HttpHeaders().set('Authorization', 'Bearer ' + token)}
-		);
+		return this.http.get('/server/login');
 	}
 
 	ping() {

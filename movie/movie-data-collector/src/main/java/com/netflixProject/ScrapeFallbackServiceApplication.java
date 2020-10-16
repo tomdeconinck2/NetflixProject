@@ -12,11 +12,11 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 //@ComponentScan({"com.example.demo.repositories"})
 //@EnableJpaRepositories("com.example.demo.repositories")
 @SpringBootApplication //(exclude = {DataSourceAutoConfiguration.class }) //TODO wanneer componentscan nodig?
-public class MovieDataCollectorApplication {
+public class ScrapeFallbackServiceApplication {
 
 	public static void main(String[] args) {
 		System.out.println(" Runs ");
-		SpringApplication.run(MovieDataCollectorApplication.class, args);
+		SpringApplication.run(ScrapeFallbackServiceApplication.class, args);
 		MovieScraperService m = new MovieScraperService();
 		//m.scrape();
 				

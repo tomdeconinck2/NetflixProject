@@ -35,7 +35,11 @@ export class MovieService {
 	}
 	
 	getMovieStream(){
-		return this.http.get('/server/stream/test') //TODO use Id
+		return this.http.get(this.getMovieStreamLocation()) //TODO use Id
+	}
+	
+	getMovieStreamLocation(){
+		return '/server/stream/test';
 	}
 
 }

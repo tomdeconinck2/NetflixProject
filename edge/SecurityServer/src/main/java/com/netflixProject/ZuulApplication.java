@@ -33,29 +33,33 @@ public class ZuulApplication extends WebSecurityConfigurerAdapter {
 	public String username(@AuthenticationPrincipal OAuth2User principal) {
 		System.out.println("Getting user ");
 		return (principal != null && principal.getAttribute("login") != null) ? principal.getAttribute("login") : "NOT LOGGED IN";
-		//return Collections.singletonMap("login", principal.getAttribute("login"));
 	}
-	
-	
+
 	@GetMapping("/private")
 	public String privatee(@AuthenticationPrincipal OAuth2User principal) {
 		return "Protected message";
 	}
-	
-	
+
+	boolean securityEnabled = false; // Enable security here
+
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		// @formatter:off
-		http.authorizeRequests(
-				a -> a.antMatchers("/", "/error", "/webjars/**", "/login/**").permitAll()
+		if (securityEnabled == false) {
+			http.authorizeRequests(a -> a.antMatchers("/", "/error", "/webjars/**", "/login/**").permitAll()
 					.antMatchers("/private").authenticated()
-					//.anyRequest().authenticated())
-					.anyRequest().permitAll())
-				.logout(l -> l.logoutSuccessUrl("/").permitAll())
-				.exceptionHandling(e -> e.authenticationEntryPoint(new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED)))
-		        .csrf(c -> c.csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse()) )
-				.oauth2Login();
-		// @formatter:on
+					// .anyRequest().authenticated())
+					.anyRequest().permitAll()).logout(l -> l.logoutSuccessUrl("/").permitAll())
+					.exceptionHandling(
+							e -> e.authenticationEntryPoint(new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED)))
+					.csrf(c -> c.csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())).oauth2Login();
+		} else {
+			http.authorizeRequests(a -> a.antMatchers("/", "/error", "/webjars/**", "/login/**").permitAll()
+					.anyRequest().authenticated()
+					.anyRequest().permitAll()).logout(l -> l.logoutSuccessUrl("/").permitAll())
+					.exceptionHandling(
+							e -> e.authenticationEntryPoint(new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED)))
+					.csrf(c -> c.csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())).oauth2Login();
+		}
 	}
 
 	public static void main(String[] args) {

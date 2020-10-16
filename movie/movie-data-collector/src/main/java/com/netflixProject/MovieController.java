@@ -34,8 +34,9 @@ public class MovieController {
 
 	@GetMapping("/movies")
 	public List<Movie> list() {
-		return this.mr.findAll().stream()
-				.filter(movie -> movie.id != 1).collect(Collectors.toList());
+		//return this.mr.findAll().stream()
+		//		.filter(movie -> movie.id != 1).collect(Collectors.toList());
+		return this.mss.movieList;
 	}
 
 }

@@ -23,18 +23,19 @@ zuul:
   ignored-services: '*'
   #sensitiveHeaders: Cookie,Set-Cookie
   routes:
+  
+    #Edge: 
     config:
       path: /config/**
       service-id: config-server
-    movie:
-      path: /movie/**
-      service-id: movie-data-collector
     security:
       path: /sec/**
       service-id: security-server
     test:
       path: /test/**
       service-id: test
+      
+    # User:
     user-service:
       path: /user-service/**
       service-id: user-service
@@ -44,16 +45,20 @@ zuul:
     feedback-service:
       path: /feedback-service/**
       service-id: feedback-service
-    
+
+    # Movie:
+    movie:
+      path: /movie/**
+      service-id: Scrape-Fallback-Service
     explore:
       path: /explore/**
       service-id: trainingservice
-      
     db:
       path: /db/**
       service-id: trainingservice
-      
     stream:  
       path: /stream/**
-      service-id: streamservice
+      service-id: stream-service
+      
+    # Data:   
 #

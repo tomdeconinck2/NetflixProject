@@ -35,11 +35,8 @@ export class MovieComponent implements OnInit {
 				
 				this.movieTable = data as Object [];
 				this.movieTableDS.data = this.movieTable;
-
-				//TODO Using this line, leads to compile error. 
-				//this.movieTableDS.data = data;
 			}, 
-			err => { console.log("Err"); console.error(err); this.movies = err.error.text },
+			err => { console.log("Err"); console.error(err);},
 		);
 	}
 }
