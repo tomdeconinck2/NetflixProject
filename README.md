@@ -1,4 +1,4 @@
-t# NetflixProject
+# NetflixProject
 
 In order to be able to run, ensure the following:
 
