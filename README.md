@@ -27,10 +27,11 @@ Possible Problems?
 
 
 # Current Microservices:
+
 Edge:
-1 Eureka: used for service registery and discovery
-2 Zuul: the entrypoint of our backend registery. It forwards requests towards the appropiate microservices on the backend. Security aspects will be added here later.
-3 Config Server: used to support different configurations (not doing much atm)
+1. Eureka: used for service registery and discovery
+2. Zuul: the entrypoint of our backend registery. It forwards requests towards the appropiate microservices on the backend. Security aspects will be added here later.
+3. Config Server: used to support different configurations (not doing much atm)
 
 User:
 1. UserService: used to add/delete users
